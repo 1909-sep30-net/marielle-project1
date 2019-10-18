@@ -23,12 +23,22 @@ namespace Project1.DataAccess
 
         public void AddOrder(BL.Orders o)
         {
-            throw new System.NotImplementedException();
+            UpdateInventory(o.CustOrder);
+            _context.Orders.Add(_map.ParseOrders(o));
+            _context.SaveChanges();
+
         }
 
-        public List<BL.Inventory> GetAvailInventory()
+
+        public List<BL.Inventory> GetAvailInventory(int locationId)
         {
-            throw new System.NotImplementedException();
+            List<Inventory> dbAvail = _context.Inventory.Where(i => i.LocationId == locationId).ToList();
+            List<BL.Inventory> availInv = new List<BL.Inventory>();
+            foreach (Inventory i in dbAvail)
+            {
+                availInv.Add(_map.ParseInventory(i));
+            }
+            return availInv;
         }
 
         public BL.Customer GetCustomerById(int id)
@@ -103,7 +113,13 @@ namespace Project1.DataAccess
 
         public void UpdateInventory(List<BL.Inventory> i)
         {
-            throw new System.NotImplementedException();
+            Inventory dbInv = new Inventory();
+            foreach (BL.Inventory item in i)
+            {
+                dbInv = _context.Inventory.Single(inv => inv.InventoryId == item.InventID);
+                dbInv.Stock = dbInv.Stock - item.Stock;
+            }
+            _context.SaveChanges();
         }
     }
 }

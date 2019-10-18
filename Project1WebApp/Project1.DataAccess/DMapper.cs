@@ -109,7 +109,29 @@ namespace Project1.DataAccess
 
         public Entities.Orders ParseOrders(BusinessLogic.Orders o)
         {
-            throw new NotImplementedException();
+            return new Entities.Orders()
+            {
+                OrderDate = DateTime.Now,
+                LocationId = o.Location.LocID,
+                CustId = o.Cust.CustID,
+                CustOrder = ParseCustOrder(o.CustOrder, o.OrdID),
+
+            };
+        }
+
+        private ICollection<CustOrder> ParseCustOrder(List<BusinessLogic.Inventory> custOrder, int OrdID)
+        {
+            ICollection<CustOrder> dbcustOrder = null;
+            foreach (BusinessLogic.Inventory item in custOrder)
+            {
+                dbcustOrder.Add(new CustOrder()
+                {
+                    OrderId = OrdID,
+                    Quantity = item.Stock,
+                    Product = _context.Product.Single(p => p.ProductId == _context.Inventory.Single(inv => inv.InventoryId == item.InventID).ProductId)
+                }); ;
+            }
+            return dbcustOrder;
         }
 
         public BusinessLogic.Product ParseProduct(Entities.Product p)

@@ -10,7 +10,7 @@ namespace Project1.BusinessLogic
 
         public List<Inventory> GetInventory(int id);
 
-        public List<Inventory> GetAvailInventory();
+        public List<Inventory> GetAvailInventory(int locationId);
 
         public void UpdateInventory(List<Inventory> i);
 

@@ -93,5 +93,45 @@ namespace Project1WebApp.Models
             }
             return custO;
         }
+
+        public List<PlaceOrderViewModel> ParseInventory(List<Inventory> list, int CustID, int LocID)
+        {
+            List<PlaceOrderViewModel> availInv = new List<PlaceOrderViewModel>();
+            foreach (Inventory item in list)
+            {
+                availInv.Add(ParseAvailInventory(item, CustID, LocID));
+            }
+            return availInv;
+        }
+
+        internal List<Inventory> ParseInvID(List<int> invBought, List<int> quantity)
+        {
+            List<Inventory> inv = new List<Inventory>();
+            int i = 0;
+            foreach (int item in invBought)
+            {
+                inv.Add(new Inventory()
+                {
+                    InventID = item,
+                    Stock = quantity[i]
+                    
+                });
+                i++;
+            }
+            return inv;
+        }
+
+        private PlaceOrderViewModel ParseAvailInventory(Inventory item, int c, int l)
+        {
+            return new PlaceOrderViewModel()
+            {
+                Price = item.Prod.Price,
+                ProductName = item.Prod.Name,
+                Stock = item.Stock,
+                InvId = item.InventID,
+                CustID = c,
+                LocID = l
+            };
+        }
     }
 }

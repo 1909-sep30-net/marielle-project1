@@ -27,6 +27,7 @@ namespace Project1WebApp.Controllers
             return View();
         }
 
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Search(SearchViewModel viewModel)
@@ -76,5 +77,39 @@ namespace Project1WebApp.Controllers
             List<CustomerOrdersViewModel> custOrderView = _mapper.ParseCustOrderList(custOrder);
             return View(custOrderView);
         }
+        public ActionResult SetLocation(int id)
+        {
+            var viewModel = new List<LocationViewModel>();
+            foreach (Location l in _repository.GetLocations())
+            {
+                viewModel.Add(_mapper.ParseLocation(l));
+            }
+            ViewData["Locations"] = viewModel;
+            ViewData["CustID"] = id;
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult PlaceOrder(int LocID,int CustID)
+        {
+            List<PlaceOrderViewModel> AvailInvent = _mapper.ParseInventory(_repository.GetAvailInventory(LocID),CustID,LocID);
+            return View(AvailInvent);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddOrder(PlaceOrderViewModel viewModel)
+        {
+            Orders o = new Orders()
+            {
+                Cust = _repository.GetCustomerById(viewModel.CustID),
+                Location = _repository.GetLocationByID(viewModel.LocID),
+                CustOrder = _mapper.ParseInvID(viewModel.InvBought, viewModel.Quantity)
+
+            };
+            _repository.AddOrder(o);
+            return RedirectToAction(nameof(Index));
+        }
+
     }
 }

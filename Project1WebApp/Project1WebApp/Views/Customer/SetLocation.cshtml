@@ -1,0 +1,18 @@
+﻿@model Project1WebApp.Models.LocationViewModel
+@{
+    ViewData["Title"] = "SetLocation";
+}
+
+<h1>Set Location</h1>
+<form asp-action="PlaceOrder">
+    <div class=" form-group">
+        <label asp-for="BranchName" class="control-label"></label>
+        @*<select asp-for="BranchName" asp-items="@ViewBag.Locations.BranchName">*@
+        <select asp-for="LocID" asp-items="@(new SelectList(ViewBag.Locations,"LocID","BranchName"))">
+        </select>
+    </div>
+    @Html.Hidden("CustID", ViewData["CustID"])
+    <div class="form-group">
+        <input type="submit" value="Place Order" class="btn btn-primary" />
+    </div>
+</form>
