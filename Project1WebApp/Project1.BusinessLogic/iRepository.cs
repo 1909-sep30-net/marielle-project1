@@ -18,5 +18,6 @@ namespace Project1.BusinessLogic
 
         public void AddOrder(Orders o);
         Location GetLocationByID(int id);
+        List<Orders> GetLocationOrderHistory(int id);
     }
 }

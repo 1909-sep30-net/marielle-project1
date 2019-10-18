@@ -1,0 +1,67 @@
+﻿@model Project1WebApp.Models.LocationOrderHistoryViewModel
+@{
+    ViewData["Title"] = "OrderHistory";
+}
+
+<h1>Order History of @Model.BranchName</h1>
+@{int ctr = 0; }
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Order Date
+            </th>
+            <th>
+                Product
+            </th>
+            <th>
+                Quantity
+            </th>
+            <th>
+                Total
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model.Order)
+        {
+            ctr = 0;
+            foreach (CustOrderViewModel custO in item.CustomerOrder)
+            {
+                if (ctr == 0)
+                {
+                    <tr>
+                        <td rowspan=@item.CustomerOrder.Count()>
+                            @Html.DisplayFor(modelItem => item.OrdDate)
+                        </td>
+                        <td>
+                            @custO.ProductName
+                        </td>
+                        <td>
+                            @custO.Stock
+                        </td>
+                        <td rowspan=@item.CustomerOrder.Count()>
+                            @Html.DisplayFor(modelItem => item.Total)
+                        </td>
+                    </tr>
+
+                }
+                else
+                {
+                    <tr>
+                        <td>
+                            @custO.ProductName
+                        </td>
+                        <td>
+                            @custO.Stock
+                        </td>
+                    </tr>
+                }
+                ctr++;
+
+            }
+
+        }
+    </tbody>
+</table>

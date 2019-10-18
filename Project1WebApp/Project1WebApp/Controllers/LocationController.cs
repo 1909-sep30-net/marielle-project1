@@ -63,9 +63,12 @@ namespace Project1WebApp.Controllers
         }
 
         // GET: Location/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult OrderHistory(int id)
         {
-            return View();
+            List<Orders> lORdHist = _repository.GetLocationOrderHistory(id);
+            Location l = _repository.GetLocationByID(id);
+            LocationOrderHistoryViewModel local = _mapper.ParseLocationOrderHistory(lORdHist, l);
+            return View(local);
         }
 
         // POST: Location/Edit/5

@@ -38,5 +38,42 @@ namespace Project1WebApp.Models
                 BanchName = l.BranchName
             };
         }
+
+        public LocationOrderHistoryViewModel ParseLocationOrderHistory(List<Orders> lORdHist, Location l)
+        {
+            return new LocationOrderHistoryViewModel() {
+                BranchName = l.BranchName,
+                Order = ParseOrderList(lORdHist)
+            };
+        }
+
+        private List<OrdersViewModel> ParseOrderList(List<Orders> lORdHist)
+        {
+            List<OrdersViewModel> custOrder = new List<OrdersViewModel>();
+            foreach (Orders o in lORdHist)
+            {
+                custOrder.Add(new OrdersViewModel() { 
+                    OrdDate = o.Date,
+                    OrdID = o.OrdID,
+                    CustomerOrder = ParseCustomerOrder(o.CustOrder),
+                    Total = o.Total
+                });
+            }
+            return custOrder;
+        }
+
+        private List<CustOrderViewModel> ParseCustomerOrder(List<Inventory> custOrder)
+        {
+            List<CustOrderViewModel> custO = new List<CustOrderViewModel>();
+            foreach (Inventory i in custOrder)
+            {
+                custO.Add(new CustOrderViewModel()
+                {
+                    ProductName = i.Prod.Name,
+                    Stock = i.Stock
+                });
+            }
+            return custO;
+        }
     }
 }

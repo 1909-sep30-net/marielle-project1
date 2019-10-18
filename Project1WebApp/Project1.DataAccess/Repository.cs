@@ -63,6 +63,17 @@ namespace Project1.DataAccess
             return _map.ParseLocation(_context.Location.Single(l => l.LocationId == id));
         }
 
+        public List<BL.Orders> GetLocationOrderHistory(int id)
+        {
+            List<BL.Orders> locOrdHist = new List<BL.Orders>();
+            List<Orders> dbOrdHist = _context.Orders.Where(o => o.LocationId == id).ToList();
+            foreach (Orders item in dbOrdHist)
+            {
+                locOrdHist.Add(_map.ParseOrders(item));
+            }
+            return locOrdHist;
+        }
+
         public List<BL.Location> GetLocations()
         {
             List<BL.Location> local = new List<BL.Location>();

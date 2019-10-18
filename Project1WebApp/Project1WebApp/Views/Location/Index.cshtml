@@ -22,8 +22,8 @@
                 @Html.DisplayFor(modelItem => item.BranchName)
             </td>
             <td>
-                @Html.ActionLink("View Order History", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("View Inventory", "GetInventory", new { id=item.LocID }) 
+                @Html.ActionLink("View Order History", "OrderHistory", new { id = item.LocID }) |
+                @Html.ActionLink("View Inventory", "GetInventory", new { id = item.LocID }) 
             </td>
         </tr>
 }

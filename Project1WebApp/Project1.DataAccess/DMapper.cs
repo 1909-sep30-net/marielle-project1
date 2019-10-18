@@ -1,6 +1,7 @@
 ﻿using Project1.BusinessLogic;
 using Project1.DataAccess.Entities;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Project1.DataAccess
@@ -48,6 +49,15 @@ namespace Project1.DataAccess
                 InventID = i.InventoryId
             };
         }
+        public BusinessLogic.Inventory ParseInventory(Entities.CustOrder o)
+        {
+            return new BusinessLogic.Inventory()
+            {
+                Prod = ParseProduct(_context.Product.Single(p => p.ProductId == o.ProductId)),
+                Stock = o.Quantity,
+                InventID = o.CustOrderId 
+            };
+        }
 
         public Entities.Inventory ParseInventory(BusinessLogic.Inventory i)
         {
@@ -76,7 +86,24 @@ namespace Project1.DataAccess
 
         public BusinessLogic.Orders ParseOrders(Entities.Orders o)
         {
-            throw new NotImplementedException();
+            return new BusinessLogic.Orders()
+            {
+                Cust = ParseCustomer(_context.Customer.Single(c => c.CustId == o.CustId)),
+                Location = ParseLocation(_context.Location.Single(l => l.LocationId == o.LocationId)),
+                CustOrder = ParseCustOrder(_context.CustOrder.Where(c => c.OrderId == o.OrderId).ToList()),
+                Date = o.OrderDate,
+                Total = o.Total
+            };
+        }
+
+        private List<BusinessLogic.Inventory> ParseCustOrder(List<CustOrder> list)
+        {
+            List<BusinessLogic.Inventory> inv = new List<BusinessLogic.Inventory>();
+            foreach (CustOrder c in list)
+            {
+                inv.Add(ParseInventory(c));
+            }
+            return inv;
         }
 
         public Entities.Orders ParseOrders(BusinessLogic.Orders o)
