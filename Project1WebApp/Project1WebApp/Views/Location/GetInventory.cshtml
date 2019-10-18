@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Project1WebApp.Models.InventoryViewModel>
+
+@{
+    ViewData["Title"] = "GetInventory";
+}
+
+<h1>Location Inventory of @Model.First().BanchName</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stock)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stock)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

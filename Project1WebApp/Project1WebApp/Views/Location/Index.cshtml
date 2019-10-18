@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Project1WebApp.Models.LocationViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Locations</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BranchName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BranchName)
+            </td>
+            <td>
+                @Html.ActionLink("View Order History", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("View Inventory", "GetInventory", new { id=item.LocID }) 
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
