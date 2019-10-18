@@ -93,9 +93,13 @@ namespace Project1WebApp.Controllers
         }
 
         // GET: Customer/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult GetGetOrderHistory(int id)
         {
-            return View();
+            List<Orders> custOrder = _repository.GetCustomerOrderHistory(id);
+            Customer c = _repository.GetCustomerById(id);
+            ViewData["CustName"] = c.FirstName + " " + c.LastName;
+            List<CustomerOrdersViewModel> custOrderView = _mapper.ParseCustOrderList(custOrder);
+            return View(custOrderView);
         }
 
         // POST: Customer/Delete/5

@@ -47,16 +47,34 @@ namespace Project1WebApp.Models
             };
         }
 
-        private List<OrdersViewModel> ParseOrderList(List<Orders> lORdHist)
+        private List<LocationOrdersViewModel> ParseOrderList(List<Orders> lORdHist)
         {
-            List<OrdersViewModel> custOrder = new List<OrdersViewModel>();
+            List<LocationOrdersViewModel> custOrder = new List<LocationOrdersViewModel>();
             foreach (Orders o in lORdHist)
             {
-                custOrder.Add(new OrdersViewModel() { 
+                custOrder.Add(new LocationOrdersViewModel() {
                     OrdDate = o.Date,
                     OrdID = o.OrdID,
                     CustomerOrder = ParseCustomerOrder(o.CustOrder),
-                    Total = o.Total
+                    Total = o.Total,
+                    CustName = o.Cust.FirstName + " " + o.Cust.LastName
+                }) ;
+            }
+            return custOrder;
+        }
+        public List<CustomerOrdersViewModel> ParseCustOrderList(List<Orders> cOrdHist)
+        {
+            List<CustomerOrdersViewModel> custOrder = new List<CustomerOrdersViewModel>();
+            foreach (Orders o in cOrdHist)
+            {
+                custOrder.Add(new CustomerOrdersViewModel()
+                {
+                    OrdDate = o.Date,
+                    OrdID = o.OrdID,
+                    CustomerOrder = ParseCustomerOrder(o.CustOrder),
+                    Total = o.Total,
+                    BranchName = o.Location.BranchName
+                    
                 });
             }
             return custOrder;

@@ -1,18 +1,19 @@
-﻿@model Project1WebApp.Models.LocationOrderHistoryViewModel
+﻿@model IEnumerable<Project1WebApp.Models.CustomerOrdersViewModel>
+
 @{
-    ViewData["Title"] = "OrderHistory";
+    ViewData["Title"] = "GetGetOrderHistory";
 }
 
-<h1>Order History of @Model.BranchName</h1>
+<h1>Order History of Customer @ViewBag.CustName</h1>
 @{int ctr = 0; }
 <table class="table">
     <thead>
         <tr>
             <th>
-                Customer Name
+                @Html.DisplayNameFor(model => model.BranchName)
             </th>
             <th>
-                Order Date
+                @Html.DisplayNameFor(model => model.OrdDate)
             </th>
             <th>
                 Product
@@ -21,13 +22,12 @@
                 Quantity
             </th>
             <th>
-                Total
+                @Html.DisplayNameFor(model => model.Total)
             </th>
         </tr>
     </thead>
-
     <tbody>
-        @foreach (var item in Model.Order)
+        @foreach (var item in Model)
         {
             ctr = 0;
             foreach (CustOrderViewModel custO in item.CustomerOrder)
@@ -36,11 +36,12 @@
                 {
                     <tr>
                         <td rowspan=@item.CustomerOrder.Count()>
-                            @Html.DisplayFor(modelItem => item.CustName)
+                            @Html.DisplayFor(modelItem => item.BranchName)
                         </td>
                         <td rowspan=@item.CustomerOrder.Count()>
                             @Html.DisplayFor(modelItem => item.OrdDate)
                         </td>
+
                         <td>
                             @custO.ProductName
                         </td>
@@ -51,7 +52,6 @@
                             @Html.DisplayFor(modelItem => item.Total)
                         </td>
                     </tr>
-
                 }
                 else
                 {
@@ -65,7 +65,6 @@
                     </tr>
                 }
                 ctr++;
-
             }
 
         }

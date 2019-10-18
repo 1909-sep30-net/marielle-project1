@@ -8,6 +8,7 @@ namespace Project1WebApp.Models
     public class LocationOrderHistoryViewModel
     {
         public string BranchName { get; set; }
-        public List<OrdersViewModel> Order { get; set; }
+        
+        public List<LocationOrdersViewModel> Order { get; set; }
     }
 }

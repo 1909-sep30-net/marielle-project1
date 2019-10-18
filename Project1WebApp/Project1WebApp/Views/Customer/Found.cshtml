@@ -38,8 +38,8 @@
             </td>
            
             <td>
-                @Html.ActionLink("Get Order History", "GetOrderHistory", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Place Order", "PlaceOrder", new { /* id=item.PrimaryKey */ }) 
+                @Html.ActionLink("Get Order History", "GetGetOrderHistory", new { id = item.CustID }) |
+                @Html.ActionLink("Place Order", "PlaceOrder", new { id = item.CustID }) 
             </td>
         </tr>
 }

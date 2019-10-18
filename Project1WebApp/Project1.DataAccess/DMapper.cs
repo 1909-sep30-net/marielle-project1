@@ -22,7 +22,8 @@ namespace Project1.DataAccess
                 LastName = c.LastName,
                 Street = c.Street,
                 State = (States)Enum.Parse(typeof(States), c.State, true),
-                Zipcode = int.Parse(c.ZipCode)
+                Zipcode = int.Parse(c.ZipCode),
+                CustID = c.CustId
 
             };
         }

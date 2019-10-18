@@ -31,6 +31,23 @@ namespace Project1.DataAccess
             throw new System.NotImplementedException();
         }
 
+        public BL.Customer GetCustomerById(int id)
+        {
+            return _map.ParseCustomer(_context.Customer.Single(c => c.CustId == id));
+
+        }
+
+        public List<BL.Orders> GetCustomerOrderHistory(int id)
+        {
+            List<BL.Orders> custOrder = new List<BL.Orders>();
+            List<Orders> dbCustOrder = _context.Orders.Where(o => o.CustId == id).ToList();
+            foreach (Orders o in dbCustOrder)
+            {
+                custOrder.Add(_map.ParseOrders(o));
+            }
+            return custOrder;
+        }
+
         public List<BL.Customer> GetCustomers()
         {
             throw new System.NotImplementedException();
