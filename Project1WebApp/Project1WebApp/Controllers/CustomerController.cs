@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Project1.BusinessLogic;
 using Project1WebApp.Models;
+using System.Collections.Generic;
 
 namespace Project1WebApp.Controllers
 {
@@ -13,21 +9,24 @@ namespace Project1WebApp.Controllers
     {
         private readonly IRepository _repository;
         private VMapper _mapper = new VMapper();
+
         public CustomerController(IRepository repository)
         {
             _repository = repository;
         }
+
         // GET: Customer
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: Customer/Details/5
+        // GET: Search Detials
         public ActionResult Search()
         {
             return View();
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Search(SearchViewModel viewModel)
@@ -38,7 +37,6 @@ namespace Project1WebApp.Controllers
             }
             catch
             {
-
                 return View(viewModel);
             }
         }
@@ -69,30 +67,7 @@ namespace Project1WebApp.Controllers
             }
         }
 
-        // GET: Customer/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Customer/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Customer/Delete/5
+        // GET: Customer Order History
         public ActionResult GetGetOrderHistory(int id)
         {
             List<Orders> custOrder = _repository.GetCustomerOrderHistory(id);
@@ -100,23 +75,6 @@ namespace Project1WebApp.Controllers
             ViewData["CustName"] = c.FirstName + " " + c.LastName;
             List<CustomerOrdersViewModel> custOrderView = _mapper.ParseCustOrderList(custOrder);
             return View(custOrderView);
-        }
-
-        // POST: Customer/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
         }
     }
 }
