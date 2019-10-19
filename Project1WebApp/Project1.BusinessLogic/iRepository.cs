@@ -21,5 +21,7 @@ namespace Project1.BusinessLogic
         List<Orders> GetLocationOrderHistory(int id);
         List<Orders> GetCustomerOrderHistory(int id);
         Customer GetCustomerById(int id);
+        string GetProductNameById(int inventID);
+        decimal GetProductPriceById(int inventID);
     }
 }

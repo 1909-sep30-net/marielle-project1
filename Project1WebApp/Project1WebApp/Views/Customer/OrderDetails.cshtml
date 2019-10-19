@@ -1,0 +1,42 @@
+﻿@model Project1WebApp.Models.OrderDetailsViewModel
+
+@{
+    ViewData["Title"] = "OrderDetails";
+}
+
+<h1>Order Details</h1>
+<h2>Customer: @Model.CustomerName</h2>
+<h2>Location: @Model.LocationName</h2>
+<h2>Items bought: </h2>
+<table>
+    <thead>
+        <th>
+            Product
+        </th>
+        <th>
+            Price (per unit)
+        </th>
+        <th>
+            Quantity
+        </th>
+    </thead>
+    <tbody>
+        @foreach (AvailInvViewModel item in Model.custBought)
+        {
+            <tr>
+                <td>
+                    @item.ProductName
+                </td>
+                <td>
+                    @item.Price
+                </td>
+                <td>
+                    @item.Stock
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<h2>Total: @ViewData["Total"]</h2>
+<a asp-action="Home"/>
+

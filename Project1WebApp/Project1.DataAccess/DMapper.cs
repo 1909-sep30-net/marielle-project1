@@ -114,24 +114,40 @@ namespace Project1.DataAccess
                 OrderDate = DateTime.Now,
                 LocationId = o.Location.LocID,
                 CustId = o.Cust.CustID,
-                CustOrder = ParseCustOrder(o.CustOrder, o.OrdID),
+                CustOrder = ParseCustOrder(o.CustOrder),
+                Total = CalculateTotal(o.CustOrder)
 
             };
         }
 
-        private ICollection<CustOrder> ParseCustOrder(List<BusinessLogic.Inventory> custOrder, int OrdID)
+        private decimal CalculateTotal(List<BusinessLogic.Inventory> custOrder)
         {
-            ICollection<CustOrder> dbcustOrder = null;
+           decimal total = 0;
+            foreach(BusinessLogic.Inventory item in custOrder)
+            {
+                total += _context.Product.Single(p => p.ProductId == GetProductId(item.InventID)).Price * item.Stock;
+            }
+           return total;
+        }
+
+        private ICollection<CustOrder> ParseCustOrder(List<BusinessLogic.Inventory> custOrder)
+        {
+            ICollection<CustOrder> dbcustOrder = new List<CustOrder>();
             foreach (BusinessLogic.Inventory item in custOrder)
             {
-                dbcustOrder.Add(new CustOrder()
+                dbcustOrder.Add(new Entities.CustOrder()
                 {
-                    OrderId = OrdID,
                     Quantity = item.Stock,
-                    Product = _context.Product.Single(p => p.ProductId == _context.Inventory.Single(inv => inv.InventoryId == item.InventID).ProductId)
-                }); ;
+                    ProductId = GetProductId(item.InventID)
+                }); 
             }
             return dbcustOrder;
+        }
+
+        private int GetProductId(int inventID)
+        {
+            Entities.Inventory i = _context.Inventory.Single(inv => inventID == inv.InventoryId);
+            return i.ProductId;
         }
 
         public BusinessLogic.Product ParseProduct(Entities.Product p)

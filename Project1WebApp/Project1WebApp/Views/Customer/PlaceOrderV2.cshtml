@@ -1,0 +1,47 @@
+﻿@model Project1WebApp.Models.PlaceOrderViewModelV2
+
+@{
+    ViewData["Title"] = "PlaceOrderV2";
+}
+
+<h1>PlaceOrderV2</h1>
+
+<form asp-action="AddOrder">
+    <table>
+        <thead>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Stock</th>
+        <th>Quantity</th>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.availInventory)
+            {
+                <tr>
+                    <td>
+                        <label>
+                            <input type="checkbox"
+                                   name="@Model.custBought"
+                                   value="@item.InventID"
+                                   @if (Model.custBought.Contains(item.InventID)) { <text> checked </text> } /> @item.ProductName
+                            </label>
+                        </td>
+                        <td>
+                            @item.Price
+                        </td>
+                        <td>
+                            @item.Stock
+                        </td>
+                        <td>
+                            <label asp-for="@(Model.Quantity)" class="control-label"></label>
+                            <input asp-for="@(Model.Quantity)" class="form-control" />
+                            <span asp-validation-for="@(Model.Quantity)" class="text-danger"></span>
+                        </td>
+                    </tr>
+                }
+        </tbody>
+    </table>
+    <div class="form-group">
+        <input type="submit" value="Place Order" class="btn btn-primary" />
+    </div>
+</form>

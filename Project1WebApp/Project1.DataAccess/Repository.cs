@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using BL = Project1.BusinessLogic;
-using Project1.DataAccess.Entities;
+﻿using Project1.DataAccess.Entities;
+using System.Collections.Generic;
 using System.Linq;
+using BL = Project1.BusinessLogic;
 
 namespace Project1.DataAccess
 {
@@ -15,6 +15,7 @@ namespace Project1.DataAccess
             _context = context;
             _map = new DMapper(context);
         }
+
         public void AddCustomer(BL.Customer c)
         {
             _context.Customer.Add(_map.ParseCustomer(c));
@@ -26,9 +27,7 @@ namespace Project1.DataAccess
             UpdateInventory(o.CustOrder);
             _context.Orders.Add(_map.ParseOrders(o));
             _context.SaveChanges();
-
         }
-
 
         public List<BL.Inventory> GetAvailInventory(int locationId)
         {
@@ -36,7 +35,7 @@ namespace Project1.DataAccess
             List<BL.Inventory> availInv = new List<BL.Inventory>();
             foreach (Inventory i in dbAvail)
             {
-                availInv.Add(_map.ParseInventory(i));
+                if (i.Stock > 0) availInv.Add(_map.ParseInventory(i));
             }
             return availInv;
         }
@@ -44,7 +43,6 @@ namespace Project1.DataAccess
         public BL.Customer GetCustomerById(int id)
         {
             return _map.ParseCustomer(_context.Customer.Single(c => c.CustId == id));
-
         }
 
         public List<BL.Orders> GetCustomerOrderHistory(int id)
@@ -58,14 +56,9 @@ namespace Project1.DataAccess
             return custOrder;
         }
 
-        public List<BL.Customer> GetCustomers()
-        {
-            throw new System.NotImplementedException();
-        }
-
         public List<BL.Customer> GetCustomers(string f, string l)
         {
-            List <Customer> found = _context.Customer.Where(c => c.FirstName == f || c.LastName == l).ToList();
+            List<Customer> found = _context.Customer.Where(c => c.FirstName == f || c.LastName == l).ToList();
             List<BL.Customer> custFound = new List<BL.Customer>();
             foreach (Customer c in found)
             {
@@ -104,11 +97,21 @@ namespace Project1.DataAccess
         public List<BL.Location> GetLocations()
         {
             List<BL.Location> local = new List<BL.Location>();
-            foreach (Location l in _context.Location.Select(l=>l).ToList())
+            foreach (Location l in _context.Location.Select(l => l).ToList())
             {
                 local.Add(_map.ParseLocation(l));
             }
             return local;
+        }
+
+        public string GetProductNameById(int inventID)
+        {
+            return _context.Product.Single(p => p.ProductId == _context.Inventory.Single(inv => inv.InventoryId == inventID).ProductId).Name;
+        }
+
+        public decimal GetProductPriceById(int inventID)
+        {
+            return _context.Product.Single(p => p.ProductId == _context.Inventory.Single(inv => inv.InventoryId == inventID).ProductId).Price;
         }
 
         public void UpdateInventory(List<BL.Inventory> i)

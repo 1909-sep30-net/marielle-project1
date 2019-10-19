@@ -1,0 +1,59 @@
+@model IEnumerable<Project1WebApp.Models.PlaceOrderViewModel>
+
+@{
+    ViewData["Title"] = "PlaceOrder";
+}
+
+<h1>Place Order</h1>
+<form asp-action="AddOrder">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Stock)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Quantity)
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (PlaceOrderViewModel item in Model)
+            {
+                <tr>
+                    <td>
+                        
+                        <label class="form-check-label" name="@(item.InvBought)">
+                            @Html.DisplayFor(modelItem => item.ProductName)
+                            
+                                @*<input type="checkbox" class="form-check-input" value="@(item.InvId)" name="@(item.InvBought)"onclick="document.getElementById('@(item.InvId)').disabled=this.checked;">*@
+                            </label>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Stock)
+                    </td>
+                    <td>
+                        <label asp-for="@(item.Quantity)" class="control-label"></label>
+                        <input asp-for="@(item.Quantity)" class="form-control" id=" @(item.InvId)" />
+                        <span asp-validation-for="@(item.Quantity)" class="text-danger"></span>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @Html.Hidden("CustID", Model.First().CustID);
+    @Html.Hidden("LocID", Model.First().LocID);
+    <div class="form-group">
+        <input type="submit" value="Place Order" class="btn btn-primary" />
+    </div>
+</form>
