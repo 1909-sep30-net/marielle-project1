@@ -120,6 +120,7 @@ namespace Project1.DataAccess
             foreach (BL.Inventory item in i)
             {
                 dbInv = _context.Inventory.Single(inv => inv.InventoryId == item.InventID);
+                if (dbInv.Stock < item.Stock) throw new StockInsufficientException("Stock Insufficient");
                 dbInv.Stock = dbInv.Stock - item.Stock;
             }
             _context.SaveChanges();

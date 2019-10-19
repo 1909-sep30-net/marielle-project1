@@ -5,10 +5,10 @@
 }
 
 <h1>Order Details</h1>
-<h2>Customer: @Model.CustomerName</h2>
-<h2>Location: @Model.LocationName</h2>
-<h2>Items bought: </h2>
-<table>
+<h6>Customer: @Model.CustomerName</h6>
+<h6>Location: @Model.LocationName</h6>
+<h6>Items bought: </h6>
+<table class="table">
     <thead>
         <th>
             Product
@@ -37,6 +37,6 @@
         }
     </tbody>
 </table>
-<h2>Total: @ViewData["Total"]</h2>
+<h6>Total: @ViewData["Total"]</h6>
 <a asp-action="Home"/>
 

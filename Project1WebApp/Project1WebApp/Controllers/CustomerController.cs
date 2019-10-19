@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Project1.BusinessLogic;
 using Project1WebApp.Models;
-using System;
 using System.Collections.Generic;
 
 namespace Project1WebApp.Controllers
@@ -57,8 +56,6 @@ namespace Project1WebApp.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
-
                 _repository.AddCustomer(_mapper.ParseCustomer(viewModel));
                 return RedirectToAction(nameof(Index));
             }
@@ -102,14 +99,21 @@ namespace Project1WebApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult AddOrder(PlaceOrderViewModelV2 viewModel)
         {
-            Orders o = new Orders()
+            try
             {
-                Cust = _repository.GetCustomerById(viewModel.CustID),
-                Location = _repository.GetLocationByID(viewModel.LocID),
-                CustOrder = _mapper.ParseInvID(viewModel.custBought, viewModel.Quantity)
-            };
-            _repository.AddOrder(o);
-            return RedirectToAction(nameof(OrderDetails), viewModel);
+                Orders o = new Orders()
+                {
+                    Cust = _repository.GetCustomerById(viewModel.CustID),
+                    Location = _repository.GetLocationByID(viewModel.LocID),
+                    CustOrder = _mapper.ParseInvID(viewModel.custBought, viewModel.Quantity)
+                };
+                _repository.AddOrder(o);
+                return RedirectToAction(nameof(OrderDetails), viewModel);
+            }
+            catch
+            {
+                return View(viewModel);
+            }
         }
 
         public ActionResult OrderDetails(PlaceOrderViewModelV2 viewModel)
