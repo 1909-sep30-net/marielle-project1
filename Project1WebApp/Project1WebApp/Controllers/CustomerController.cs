@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Project1.BusinessLogic;
 using Project1WebApp.Models;
+using Serilog;
 using System.Collections.Generic;
 
 namespace Project1WebApp.Controllers
@@ -33,17 +34,22 @@ namespace Project1WebApp.Controllers
         {
             try
             {
+                Log.Information($"Searching for customer {viewModel.FirstName} {viewModel.LastName}");
                 return RedirectToAction(nameof(Found), viewModel);
             }
             catch
             {
+                Log.Error("Something went wrong when searching for a customer");
                 return View(viewModel);
             }
         }
 
-        public ActionResult Found(SearchViewModel viewModel) => View(_repository.GetCustomers(viewModel.FirstName, viewModel.LastName));
+        public ActionResult Found(SearchViewModel viewModel)
+        {
+            Log.Information($"{_repository.GetCustomers(viewModel.FirstName, viewModel.LastName).Count} customers found");
+            return View(_repository.GetCustomers(viewModel.FirstName, viewModel.LastName));
 
-        // GET: Customer/Create
+        }       // GET: Customer/Create
         public ActionResult Create()
         {
             return View();
@@ -57,10 +63,12 @@ namespace Project1WebApp.Controllers
             try
             {
                 _repository.AddCustomer(_mapper.ParseCustomer(viewModel));
-                return RedirectToAction(nameof(Index));
+                Log.Information("Customer Added!");
+                return RedirectToAction(nameof(HomeController.Index));
             }
             catch
             {
+                Log.Error("Something went wrong when adding a customer");
                 return View(viewModel);
             }
         }
@@ -72,6 +80,7 @@ namespace Project1WebApp.Controllers
             Customer c = _repository.GetCustomerById(id);
             ViewData["CustName"] = c.FirstName + " " + c.LastName;
             List<CustomerOrdersViewModel> custOrderView = _mapper.ParseCustOrderList(custOrder);
+            Log.Information($"Viewed order history of {ViewData["CustName"]}");
             return View(custOrderView);
         }
 
@@ -108,10 +117,13 @@ namespace Project1WebApp.Controllers
                     CustOrder = _mapper.ParseInvID(viewModel.custBought, viewModel.Quantity)
                 };
                 _repository.AddOrder(o);
+                Log.Information("Order Added");
+                Log.Information($"Order made by customer {_repository.GetCustomerById(viewModel.CustID).FirstName} {_repository.GetCustomerById(viewModel.CustID).LastName} at {_repository.GetLocationByID(viewModel.LocID).BranchName}");
                 return RedirectToAction(nameof(OrderDetails), viewModel);
             }
             catch
             {
+                Log.Error("Something went wrong in placing order");
                 return View(viewModel);
             }
         }

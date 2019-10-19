@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Project1.BusinessLogic;
 using Project1WebApp.Models;
+using Serilog;
 using System.Collections.Generic;
 
 namespace Project1WebApp.Controllers
@@ -34,6 +35,7 @@ namespace Project1WebApp.Controllers
             {
                 inv.Add(_mapper.ParseInventory(item, _repository.GetLocationByID(id)));
             }
+            Log.Information($"Viewed { _repository.GetLocationByID(id).BranchName}'s inventory");
             return View(inv);
         }
 
@@ -43,6 +45,7 @@ namespace Project1WebApp.Controllers
             List<Orders> lORdHist = _repository.GetLocationOrderHistory(id);
             Location l = _repository.GetLocationByID(id);
             LocationOrderHistoryViewModel local = _mapper.ParseLocationOrderHistory(lORdHist, l);
+            Log.Information($"Viewed order history of { _repository.GetLocationByID(id).BranchName}");
             return View(local);
         }
     }
