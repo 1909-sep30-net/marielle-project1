@@ -5,29 +5,49 @@ using BL = Project1.BusinessLogic;
 
 namespace Project1.DataAccess
 {
+    /// <summary>
+    /// Class that contains methods concerned with operations on the DB
+    /// </summary>
     public class Repository : BL.IRepository
     {
+        /// <summary>
+        /// Context needed to connect with the DB
+        /// </summary>
         private readonly Project0DBContext _context;
-        private DMapper _map;
+        /// <summary>
+        /// Mapper needed to map betweeen Business Logic objects and DB objects
+        /// </summary>
+        private IMapper _map;
 
         public Repository(Project0DBContext context)
         {
             _context = context;
             _map = new DMapper(context);
         }
-
+        /// <summary>
+        /// Method that adds customer to the database
+        /// </summary>
+        /// <param name="c"></param>
         public void AddCustomer(BL.Customer c)
         {
             _context.Customer.Add(_map.ParseCustomer(c));
             _context.SaveChanges();
         }
-
+        /// <summary>
+        /// Method to add order to DB
+        /// </summary>
+        /// <param name="o"></param>
         public void AddOrder(BL.Orders o)
         {
             UpdateInventory(o.CustOrder);
             _context.Orders.Add(_map.ParseOrders(o));
             _context.SaveChanges();
         }
+        /// <summary>
+        /// Method that returns the available inventory
+        /// </summary>
+        /// <param name="locationId"></param>
+        /// <returns></returns>
 
         public List<BL.Inventory> GetAvailInventory(int locationId)
         {
@@ -39,12 +59,21 @@ namespace Project1.DataAccess
             }
             return availInv;
         }
-
+        /// <summary>
+        /// Method that returns customer from the DB
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public BL.Customer GetCustomerById(int id)
         {
             return _map.ParseCustomer(_context.Customer.Single(c => c.CustId == id));
         }
 
+        /// <summary>
+        /// Method that gets order history of customer
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public List<BL.Orders> GetCustomerOrderHistory(int id)
         {
             List<BL.Orders> custOrder = new List<BL.Orders>();
@@ -55,7 +84,12 @@ namespace Project1.DataAccess
             }
             return custOrder;
         }
-
+        /// <summary>
+        /// Method that gets customers matching search parameters
+        /// </summary>
+        /// <param name="f"></param>
+        /// <param name="l"></param>
+        /// <returns></returns>
         public List<BL.Customer> GetCustomers(string f, string l)
         {
             List<Customer> found = _context.Customer.Where(c => c.FirstName == f || c.LastName == l).ToList();
@@ -66,7 +100,11 @@ namespace Project1.DataAccess
             }
             return custFound;
         }
-
+        /// <summary>
+        /// Method that returns inventory of Location
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public List<BL.Inventory> GetInventory(int id)
         {
             List<BL.Inventory> inv = new List<BL.Inventory>();
@@ -77,12 +115,20 @@ namespace Project1.DataAccess
             }
             return inv;
         }
-
+        /// <summary>
+        /// Method that returns location 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public BL.Location GetLocationByID(int id)
         {
             return _map.ParseLocation(_context.Location.Single(l => l.LocationId == id));
         }
-
+        /// <summary>
+        /// Method that returns order history of a location
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public List<BL.Orders> GetLocationOrderHistory(int id)
         {
             List<BL.Orders> locOrdHist = new List<BL.Orders>();
@@ -93,7 +139,10 @@ namespace Project1.DataAccess
             }
             return locOrdHist;
         }
-
+        /// <summary>
+        /// Method that returns all available locations
+        /// </summary>
+        /// <returns></returns>
         public List<BL.Location> GetLocations()
         {
             List<BL.Location> local = new List<BL.Location>();
@@ -103,17 +152,28 @@ namespace Project1.DataAccess
             }
             return local;
         }
-
+        /// <summary>
+        /// Method that returns product name
+        /// </summary>
+        /// <param name="inventID"></param>
+        /// <returns></returns>
         public string GetProductNameById(int inventID)
         {
             return _context.Product.Single(p => p.ProductId == _context.Inventory.Single(inv => inv.InventoryId == inventID).ProductId).Name;
         }
-
+        /// <summary>
+        /// Method that returns price of product
+        /// </summary>
+        /// <param name="inventID"></param>
+        /// <returns></returns>
         public decimal GetProductPriceById(int inventID)
         {
             return _context.Product.Single(p => p.ProductId == _context.Inventory.Single(inv => inv.InventoryId == inventID).ProductId).Price;
         }
-
+        /// <summary>
+        /// Method that updates the inventory upon placing an order
+        /// </summary>
+        /// <param name="i"></param>
         public void UpdateInventory(List<BL.Inventory> i)
         {
             Inventory dbInv = new Inventory();

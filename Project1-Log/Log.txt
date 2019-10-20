@@ -1,0 +1,8 @@
+2019-10-19 15:59:40.389 -05:00 [INF] Begin Program
+2019-10-19 16:06:48.929 -05:00 [INF] Begin Program
+2019-10-19 16:10:00.242 -05:00 [INF] Begin Program
+2019-10-19 16:13:59.763 -05:00 [INF] Begin Program
+2019-10-19 16:17:47.960 -05:00 [INF] Begin Program
+2019-10-19 16:24:57.440 -05:00 [INF] Begin Program
+2019-10-19 16:25:15.602 -05:00 [INF] Searching for customer  Nolasco
+2019-10-19 16:25:18.810 -05:00 [INF] 3 customers found

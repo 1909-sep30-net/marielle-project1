@@ -36,7 +36,7 @@
                             <label class="control-label">
                                 <input type="checkbox"
                                        name="@nameof(Model.custBought)"
-                                       value="@item.InventID" class="form-control" />@item.ProductName
+                                       value="@item.InventID" class="form-control"/> @item.ProductName
                                 </label>
                             </td>
                             <td>
@@ -46,7 +46,7 @@
                                 @item.Stock
                             </td>
                             <td>
-                                @*<label asp-for="@(Model.Quantity)" class="control-label"></label>*@
+                                
                                 <input asp-for="@(Model.Quantity)" class="form-control" />
                                 <span asp-validation-for="@(Model.Quantity)" class="text-danger"></span>
                             </td>

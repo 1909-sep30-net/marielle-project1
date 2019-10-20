@@ -6,13 +6,24 @@ using System.Linq;
 
 namespace Project1.DataAccess
 {
+    /// <summary>
+    /// Class that maps the Business Logic Objects to the objects the DB return    
+    /// </summary>
     public class DMapper : IMapper
     {
+        /// <summary>
+        /// Context used to connect to the DB
+        /// </summary>
         private readonly Project0DBContext _context;
         public DMapper(Project0DBContext context)
         {
             _context = context;
         }
+        /// <summary>
+        /// Method that converts DB customers to business logic customers and vice versa
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
         public BusinessLogic.Customer ParseCustomer(Entities.Customer c)
         {
             return new BusinessLogic.Customer()
@@ -40,7 +51,11 @@ namespace Project1.DataAccess
                 ZipCode = c.Zipcode.ToString()
             };
         }
-
+        /// <summary>
+        /// Method that converts DB inventory to Business Logic inventory and vice versa
+        /// </summary>
+        /// <param name="i"></param>
+        /// <returns></returns>
         public BusinessLogic.Inventory ParseInventory(Entities.Inventory i)
         {
             return new BusinessLogic.Inventory()
@@ -60,11 +75,11 @@ namespace Project1.DataAccess
             };
         }
 
-        public Entities.Inventory ParseInventory(BusinessLogic.Inventory i)
-        {
-            throw new NotImplementedException();
-        }
-
+        /// <summary>
+        /// Method that converts DB locations to Business Logic locations 
+        /// </summary>
+        /// <param name="l"></param>
+        /// <returns></returns>
         public BusinessLogic.Location ParseLocation(Entities.Location l)
         {
             return new BusinessLogic.Location()
@@ -79,12 +94,11 @@ namespace Project1.DataAccess
 
             };
         }
-
-        public Entities.Location ParseLocation(BusinessLogic.Location l)
-        {
-            throw new NotImplementedException();
-        }
-
+        /// <summary>
+        /// Method takes in DB orders and converts them to Business Logic orders and vice versa
+        /// </summary>
+        /// <param name="o"></param>
+        /// <returns></returns>
         public BusinessLogic.Orders ParseOrders(Entities.Orders o)
         {
             return new BusinessLogic.Orders()
@@ -96,7 +110,11 @@ namespace Project1.DataAccess
                 Total = o.Total
             };
         }
-
+        /// <summary>
+        /// Method that converts CustOrder from DB to Business Logic Inventory object types 
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
         private List<BusinessLogic.Inventory> ParseCustOrder(List<CustOrder> list)
         {
             List<BusinessLogic.Inventory> inv = new List<BusinessLogic.Inventory>();
@@ -119,7 +137,11 @@ namespace Project1.DataAccess
 
             };
         }
-
+        /// <summary>
+        /// Method that Calculates Order Total
+        /// </summary>
+        /// <param name="custOrder"></param>
+        /// <returns></returns>
         private decimal CalculateTotal(List<BusinessLogic.Inventory> custOrder)
         {
            decimal total = 0;
@@ -129,7 +151,11 @@ namespace Project1.DataAccess
             }
            return total;
         }
-
+        /// <summary>
+        /// Method that converts Business Logic inventory object to DB CustOrder Entity
+        /// </summary>
+        /// <param name="custOrder"></param>
+        /// <returns></returns>
         private ICollection<CustOrder> ParseCustOrder(List<BusinessLogic.Inventory> custOrder)
         {
             ICollection<CustOrder> dbcustOrder = new List<CustOrder>();
@@ -143,13 +169,21 @@ namespace Project1.DataAccess
             }
             return dbcustOrder;
         }
-
+        /// <summary>
+        /// Method that gets a product id
+        /// </summary>
+        /// <param name="inventID"></param>
+        /// <returns></returns>
         private int GetProductId(int inventID)
         {
             Entities.Inventory i = _context.Inventory.Single(inv => inventID == inv.InventoryId);
             return i.ProductId;
         }
-
+        /// <summary>
+        /// Method that converts DB Product to Business Logic Product
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
         public BusinessLogic.Product ParseProduct(Entities.Product p)
         {
             return new BusinessLogic.Product()
@@ -160,9 +194,5 @@ namespace Project1.DataAccess
             };
         }
 
-        public Entities.Product ParseProduct(BusinessLogic.Product p)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

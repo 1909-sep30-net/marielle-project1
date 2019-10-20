@@ -3,6 +3,9 @@ using System.Runtime.Serialization;
 
 namespace Project1.BusinessLogic
 {
+    /// <summary>
+    /// Exceptions in customer class mostly from invalid or null inputs to properties 
+    /// </summary>
     [Serializable]
     internal class CustomerException : Exception
     {

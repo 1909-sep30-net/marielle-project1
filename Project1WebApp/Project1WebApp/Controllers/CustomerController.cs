@@ -6,6 +6,9 @@ using System.Collections.Generic;
 
 namespace Project1WebApp.Controllers
 {
+    /// <summary>
+    /// Controller for Customer and Order operations
+    /// </summary>
     public class CustomerController : Controller
     {
         private readonly IRepository _repository;

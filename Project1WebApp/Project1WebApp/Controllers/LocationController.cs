@@ -6,6 +6,9 @@ using System.Collections.Generic;
 
 namespace Project1WebApp.Controllers
 {
+    /// <summary>
+    /// Controller for Location operations
+    /// </summary>
     public class LocationController : Controller
     {
         private readonly IRepository _repository;

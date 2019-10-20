@@ -2,6 +2,9 @@
 
 namespace Project1.BusinessLogic
 {
+    /// <summary>
+    /// Interface that describes operations between the DB and the Business Logic
+    /// </summary>
     public interface IRepository
     {
         public List<Customer> GetCustomers(string f, string l);

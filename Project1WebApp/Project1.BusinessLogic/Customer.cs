@@ -3,6 +3,10 @@ using System.Text.RegularExpressions;
 
 namespace Project1.BusinessLogic
 {
+     /// <summary>
+     /// Customer format of the program
+     /// UI interacts with this format of customer
+     /// </summary>
     public class Customer
     {
         private string firstName;
@@ -12,6 +16,10 @@ namespace Project1.BusinessLogic
         private States state;
         private int zipcode;
         private int custId;
+
+        /// <summary>
+        /// First Name property of Customer class (Includes format validation)
+        /// </summary>
         public string FirstName
         {
             get => firstName;
@@ -29,11 +37,10 @@ namespace Project1.BusinessLogic
             }
         }
 
-        private void validate(string value)
-        {
-            if (!Regex.Match(value, @"\s*[A-z]+\s*?([A-z]\s*)").Success) throw new CustomerException("Empty Input");
-        }
 
+        /// <summary>
+        /// Last Name Property of Customer Class (Includes format validation)
+        /// </summary>
         public string LastName {
             get => lastName;
             set
@@ -49,7 +56,9 @@ namespace Project1.BusinessLogic
                 }
             }
         }
-
+        //<summary>
+        ///Street Property of Customer class(Includes format validation)
+        /// </summary>
         public string Street
         {
             get => street;
@@ -61,6 +70,10 @@ namespace Project1.BusinessLogic
                     throw new InvalidAddressException("Invalid Street");
                 }
             } }
+
+        /// <summary>
+        /// City Property of Customer class(Includes format validation)
+        /// </summary>
         public string City {
             get
             {
@@ -75,8 +88,14 @@ namespace Project1.BusinessLogic
             }
         }
 
+        /// <summary>
+        /// State property of Customer class (Enum)
+        /// </summary>
         public States State { get; set; }
 
+        /// <summary>
+        /// Zipcode property of Address class(Includes format validation)
+        /// </summary>
         public int Zipcode
         {
             get => zipcode;
@@ -87,5 +106,14 @@ namespace Project1.BusinessLogic
             }
         }
         public int CustID { get; set; }
+
+        /// <summary>
+        /// Method that validates Customer name inputs in class
+        /// </summary>
+        /// <param name="s"></param>
+        private void validate(string value)
+        {
+            if (!Regex.Match(value, @"\s*[A-z]+\s*?([A-z]\s*)").Success) throw new CustomerException("Empty Input");
+        }
     }
 }

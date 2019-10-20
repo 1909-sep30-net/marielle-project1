@@ -3,6 +3,9 @@ using System.Runtime.Serialization;
 
 namespace Project1.BusinessLogic
 {
+    /// <summary>
+    /// Exception for invalid Address Format i.e. invalid street, city, or zipcode
+    /// </summary>
     [Serializable]
     internal class InvalidAddressException : Exception
     {
