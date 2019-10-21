@@ -250,3 +250,10 @@
 2019-10-21 13:33:59.657 -05:00 [INF] 1 customers found
 2019-10-21 13:34:16.019 -05:00 [INF] Order Added
 2019-10-21 13:34:16.121 -05:00 [INF] Order made by customer Javon Negahban at Flagship
+2019-10-21 13:37:11.874 -05:00 [INF] Begin Program
+2019-10-21 13:37:48.638 -05:00 [INF] Viewed Flagship's inventory
+2019-10-21 13:38:09.809 -05:00 [INF] Viewed order history of Flagship
+2019-10-21 13:40:56.778 -05:00 [INF] Begin Program
+2019-10-21 13:41:18.751 -05:00 [INF] Searching for customer  
+2019-10-21 13:41:19.927 -05:00 [INF] 0 customers found
+2019-10-21 13:41:27.577 -05:00 [INF] Viewed Flagship's inventory
