@@ -5,51 +5,60 @@
 }
 
 <h1>Place Order</h1>
-<form asp-action="AddOrder">
-    <div class="form-inline">
+@{ if (Model.availInventory.Count > 0)
+    {
+        <form asp-action="AddOrder">
+            <div class="form-inline">
 
-        <table class="table">
-            <thead>
+                <table class="table">
+                    <thead>
 
-            <th>
-                Product
-            </th>
+                    <th>
+                        Product
+                    </th>
 
-            <th>
-                Price
-            </th>
-            <th>
-                Quantity
-            </th>
-            </thead>
+                    <th>
+                        Price
+                    </th>
+                    <th>
+                        Quantity
+                    </th>
+                    </thead>
 
-            <tbody>
-                @foreach (AvailInvViewModel item in Model.availInventory)
-                {
-                    <tr>
-                        <td>
+                    <tbody>
+                        @foreach (AvailInvViewModel item in Model.availInventory)
+                        {
+                            <tr>
+                                <td>
 
-                            @item.ProductName
-                        </td>
-                        <td>
-                            @String.Format("{0:c}", item.Price)
-                        </td>
-                        <td>
-                            @Html.DropDownListFor(m => m.custBought[item.InventID], Enumerable.Range(0, item.Stock + 1).Select(x => new SelectListItem
-                       {
-                           Value = x.ToString(),
-                           Text = x.ToString()
-                       }))
-                            <span asp-validation-for="@(Model.custBought)" class="text-danger"></span>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
-    @Html.Hidden("CustID", Model.CustID)
-    @Html.Hidden("LocID", Model.LocID)
-    <div class="form-group">
-        <input type="submit" value="Place Order" class="btn btn-primary" />
-    </div>
-</form>
+                                    @item.ProductName
+                                </td>
+                                <td>
+                                    @String.Format("{0:c}", item.Price)
+                                </td>
+                                <td>
+                                    @Html.DropDownListFor(m => m.custBought[item.InventID], Enumerable.Range(0, item.Stock + 1).Select(x => new SelectListItem
+                               {
+                                   Value = x.ToString(),
+                                   Text = x.ToString()
+                               }))
+                                    <span asp-validation-for="@(Model.custBought)" class="text-danger"></span>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            @Html.Hidden("CustID", Model.CustID)
+            @Html.Hidden("LocID", Model.LocID)
+            <div class="form-group">
+                <input type="submit" value="Place Order" class="btn btn-primary" />
+            </div>
+        </form>
+    }
+    else
+    {
+        <p> This branch has no available inventory. If you'd like to order at a different location, please repeat the order process and choose a different location </p>
+        
+    }
+}

@@ -151,6 +151,7 @@ namespace Project1WebApp.Controllers
         public ActionResult PlaceOrder(int LocID, int CustID)
         {
             PlaceOrderViewModelV2 AvailInvent = _mapper.ParseMenu(_repository.GetAvailInventory(LocID), CustID, LocID);
+            if (AvailInvent.availInventory.Count < 1) Log.Information("Branch has no inventory");
             return View(AvailInvent);
         }
         public ActionResult PlaceOrder()

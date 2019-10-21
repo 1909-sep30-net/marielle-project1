@@ -1,6 +1,7 @@
 ﻿using Project1.DataAccess.Entities;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using BL = Project1.BusinessLogic;
 
 namespace Project1.DataAccess
@@ -91,9 +92,24 @@ namespace Project1.DataAccess
         /// <param name="f"></param>
         /// <param name="l"></param>
         /// <returns></returns>
-        public List<BL.Customer> GetCustomers(string f, string l)
+        public List<BL.Customer> GetCustomers(string f, string l) 
         {
-            List<Customer> found = _context.Customer.Where(c => c.FirstName == f || c.LastName == l).ToList();
+            int i = 0;
+            List<Customer> found = new List<Customer>();
+            if (f != null && Regex.Match(f, @"\s*[A-z]+\s*").Success) i++;
+            if (l != null && Regex.Match(l, @"\s*[A-z]+\s*").Success) i = i+2;
+            switch (i)
+            {
+                case 1:
+                    found = _context.Customer.Where(c => c.FirstName == f).ToList();
+                    break;
+                case 2:
+                    found = _context.Customer.Where(c => c.LastName == l).ToList();
+                    break;
+                case 3:
+                    found = _context.Customer.Where(c => c.FirstName == f && c.LastName == l).ToList();
+                    break;
+            }
             List<BL.Customer> custFound = new List<BL.Customer>();
             foreach (Customer c in found)
             {

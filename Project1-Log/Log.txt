@@ -257,3 +257,80 @@
 2019-10-21 13:41:18.751 -05:00 [INF] Searching for customer  
 2019-10-21 13:41:19.927 -05:00 [INF] 0 customers found
 2019-10-21 13:41:27.577 -05:00 [INF] Viewed Flagship's inventory
+2019-10-21 14:17:10.875 -05:00 [INF] Begin Program
+2019-10-21 14:17:49.936 -05:00 [INF] Searching for customer Marielle 
+2019-10-21 14:17:51.179 -05:00 [INF] 1 customers found
+2019-10-21 14:17:56.440 -05:00 [INF] Viewed order history of Marielle Nolasco
+2019-10-21 14:18:05.838 -05:00 [INF] Searching for customer Marielle 
+2019-10-21 14:18:05.908 -05:00 [INF] 1 customers found
+2019-10-21 14:18:21.743 -05:00 [ERR] Something went wrong in placing order
+2019-10-21 14:18:29.674 -05:00 [INF] Order Added
+2019-10-21 14:18:29.778 -05:00 [INF] Order made by customer Marielle Nolasco at Branch1
+2019-10-21 14:18:44.191 -05:00 [INF] Viewed order history of Flagship
+2019-10-21 14:20:31.267 -05:00 [INF] Begin Program
+2019-10-21 14:22:00.007 -05:00 [INF] Begin Program
+2019-10-21 14:22:24.416 -05:00 [INF] Searching for customer Marielle 
+2019-10-21 14:22:25.650 -05:00 [INF] 1 customers found
+2019-10-21 14:22:40.987 -05:00 [INF] Order Added
+2019-10-21 14:22:41.107 -05:00 [INF] Order made by customer Marielle Nolasco at Flagship
+2019-10-21 14:24:12.108 -05:00 [INF] Begin Program
+2019-10-21 14:24:36.797 -05:00 [INF] Searching for customer Marielle 
+2019-10-21 14:24:38.018 -05:00 [INF] 1 customers found
+2019-10-21 14:25:51.879 -05:00 [INF] Order Added
+2019-10-21 14:25:51.982 -05:00 [INF] Order made by customer Marielle Nolasco at Flagship
+2019-10-21 14:29:35.398 -05:00 [INF] Viewed Flagship's inventory
+2019-10-21 14:30:26.862 -05:00 [INF] Searching for customer Marielle 
+2019-10-21 14:30:27.031 -05:00 [INF] 1 customers found
+2019-10-21 14:30:41.059 -05:00 [INF] Order Added
+2019-10-21 14:30:41.409 -05:00 [INF] Order made by customer Marielle Nolasco at Flagship
+2019-10-21 14:38:44.557 -05:00 [INF] Begin Program
+2019-10-21 14:38:59.292 -05:00 [INF] Customer Added!
+2019-10-21 14:39:12.278 -05:00 [INF] Searching for customer Marielle 
+2019-10-21 14:39:12.599 -05:00 [INF] 1 customers found
+2019-10-21 14:39:26.567 -05:00 [INF] Order Added
+2019-10-21 14:39:26.927 -05:00 [INF] Order made by customer Marielle Nolasco at Flagship
+2019-10-21 14:39:46.157 -05:00 [INF] Viewed order history of Flagship
+2019-10-21 14:43:49.764 -05:00 [ERR] Something went wrong when adding a customer
+2019-10-21 14:44:18.847 -05:00 [INF] Customer Added!
+2019-10-21 14:44:31.767 -05:00 [INF] Searching for customer Jose 
+2019-10-21 14:44:31.836 -05:00 [INF] 1 customers found
+2019-10-21 14:44:35.282 -05:00 [INF] Viewed order history of Jose Farro Ahumada
+2019-10-21 14:44:48.204 -05:00 [INF] Searching for customer Jose 
+2019-10-21 14:44:48.281 -05:00 [INF] 1 customers found
+2019-10-21 14:45:57.174 -05:00 [INF] Order Added
+2019-10-21 14:45:57.296 -05:00 [INF] Order made by customer Jose Farro Ahumada at Branch1
+2019-10-21 14:46:25.161 -05:00 [INF] Viewed order history of Flagship
+2019-10-21 14:46:51.451 -05:00 [INF] Viewed order history of Branch2
+2019-10-21 14:46:59.389 -05:00 [INF] Viewed order history of Branch1
+2019-10-21 14:47:12.488 -05:00 [INF] Viewed Branch1's inventory
+2019-10-21 14:49:43.991 -05:00 [ERR] Something went wrong when adding a customer
+2019-10-21 14:50:15.448 -05:00 [INF] Customer Added!
+2019-10-21 14:50:27.927 -05:00 [INF] Searching for customer marielle 
+2019-10-21 14:50:27.986 -05:00 [INF] 2 customers found
+2019-10-21 14:50:54.959 -05:00 [INF] Searching for customer Marielle Marielle
+2019-10-21 14:50:55.015 -05:00 [INF] 2 customers found
+2019-10-21 14:56:37.873 -05:00 [INF] Begin Program
+2019-10-21 14:56:53.736 -05:00 [INF] Searching for customer Marielle Marielle
+2019-10-21 14:56:54.950 -05:00 [INF] 1 customers found
+2019-10-21 14:58:17.823 -05:00 [INF] Searching for customer Marielle Marielle
+2019-10-21 14:58:17.928 -05:00 [INF] 1 customers found
+2019-10-21 14:59:15.621 -05:00 [INF] Order Added
+2019-10-21 14:59:15.735 -05:00 [INF] Order made by customer Marielle Marielle at Branch2
+2019-10-21 15:00:16.692 -05:00 [INF] Searching for customer mARIELLE Marielle
+2019-10-21 15:00:16.803 -05:00 [INF] 1 customers found
+2019-10-21 15:00:50.864 -05:00 [ERR] Something went wrong in placing order
+2019-10-21 15:00:51.917 -05:00 [ERR] Something went wrong in placing order
+2019-10-21 15:00:52.389 -05:00 [ERR] Something went wrong in placing order
+2019-10-21 15:05:24.816 -05:00 [INF] Begin Program
+2019-10-21 15:05:38.586 -05:00 [INF] Searching for customer Marielle 
+2019-10-21 15:06:49.054 -05:00 [INF] Begin Program
+2019-10-21 15:07:46.888 -05:00 [INF] Searching for customer Marielle 
+2019-10-21 15:07:48.190 -05:00 [INF] 2 customers found
+2019-10-21 15:11:54.951 -05:00 [INF] Begin Program
+2019-10-21 15:12:07.729 -05:00 [INF] Searching for customer  Nolasco
+2019-10-21 15:12:08.963 -05:00 [INF] 1 customers found
+2019-10-21 15:12:17.120 -05:00 [INF] Branch has no inventory
+2019-10-21 15:12:39.824 -05:00 [INF] Searching for customer Marielle 
+2019-10-21 15:12:39.901 -05:00 [INF] 2 customers found
+2019-10-21 15:12:53.496 -05:00 [INF] Order Added
+2019-10-21 15:12:53.600 -05:00 [INF] Order made by customer Marielle Nolasco at Flagship
