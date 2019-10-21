@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using Project1.BusinessLogic;
 using Project1WebApp.Models;
 using Serilog;
+using System;
 using System.Collections.Generic;
 namespace Project1WebApp.Controllers
 {
@@ -59,9 +60,10 @@ namespace Project1WebApp.Controllers
                 Log.Information($"Searching for customer {viewModel.FirstName} {viewModel.LastName}");
                 return RedirectToAction(nameof(Found), viewModel);
             }
-            catch
+            catch(Exception e)
             {
                 Log.Error("Something went wrong when searching for a customer");
+                Log.Error(e.Message);
                 return View(viewModel);
             }
         }
@@ -101,9 +103,10 @@ namespace Project1WebApp.Controllers
                 Log.Information("Customer Added!");
                 return RedirectToAction(nameof(HomeController.Index));
             }
-            catch
+            catch (Exception e)
             {
                 Log.Error("Something went wrong when adding a customer");
+                Log.Error(e.Message);
                 return View(viewModel);
             }
         }
@@ -120,6 +123,7 @@ namespace Project1WebApp.Controllers
             ViewData["CustName"] = c.FirstName + " " + c.LastName;
             List<CustomerOrdersViewModel> custOrderView = _mapper.ParseCustOrderList(custOrder);
             Log.Information($"Viewed order history of {ViewData["CustName"]}");
+            if (custOrder.Count < 1) Log.Information($"Customer {ViewData["CustName"]} has no order history because they haven't placed any orders yet");
             return View(custOrderView);
         }
 
@@ -151,7 +155,7 @@ namespace Project1WebApp.Controllers
         public ActionResult PlaceOrder(int LocID, int CustID)
         {
             PlaceOrderViewModelV2 AvailInvent = _mapper.ParseMenu(_repository.GetAvailInventory(LocID), CustID, LocID);
-            if (AvailInvent.availInventory.Count < 1) Log.Information("Branch has no inventory");
+            if (AvailInvent.availInventory.Count < 1) Log.Information($"{_repository.GetLocationByID(LocID).BranchName} has no inventory");
             return View(AvailInvent);
         }
         public ActionResult PlaceOrder()
@@ -192,9 +196,10 @@ namespace Project1WebApp.Controllers
                 PlaceOrderViewModelV2 pass = new PlaceOrderViewModelV2() { custBought = viewModel.custBought, CustID = viewModel.CustID, LocID = viewModel.LocID };
                 return RedirectToAction(nameof(OrderDetails), pass);
             }
-            catch
+            catch(Exception e)
             {
                 Log.Error("Something went wrong in placing order");
+                Log.Error(e.Message);
                 return RedirectToAction(nameof(PlaceOrder));
             }
         }

@@ -4,70 +4,79 @@
 }
 
 <h1>Order History of @Model.BranchName</h1>
-@{int ctr = 0; }
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                Customer Name
-            </th>
-            <th>
-                Order Date
-            </th>
-            <th>
-                Product
-            </th>
-            <th>
-                Quantity
-            </th>
-            <th>
-                Total
-            </th>
-        </tr>
-    </thead>
+@if (Model.Order.Count > 0)
+{
+    int ctr = 0;
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Customer Name
+                </th>
+                <th>
+                    Order Date
+                </th>
+                <th>
+                    Product
+                </th>
+                <th>
+                    Quantity
+                </th>
+                <th>
+                    Total
+                </th>
+            </tr>
+        </thead>
 
-    <tbody>
-        @foreach (var item in Model.Order)
-        {
-            ctr = 0;
-            foreach (CustOrderViewModel custO in item.CustomerOrder)
+        <tbody>
+            @foreach (var item in Model.Order)
             {
-                if (ctr == 0)
+                ctr = 0;
+                foreach (CustOrderViewModel custO in item.CustomerOrder)
                 {
-                    <tr>
-                        <td rowspan=@item.CustomerOrder.Count()>
-                            @Html.DisplayFor(modelItem => item.CustName)
-                        </td>
-                        <td rowspan=@item.CustomerOrder.Count()>
-                            @Html.DisplayFor(modelItem => item.OrdDate)
-                        </td>
-                        <td>
-                            @custO.ProductName
-                        </td>
-                        <td>
-                            @custO.Stock
-                        </td>
-                        <td rowspan=@item.CustomerOrder.Count()>
-                            @Html.DisplayFor(modelItem => item.Total)
-                        </td>
-                    </tr>
+                    if (ctr == 0)
+                    {
+                        <tr>
+                            <td rowspan=@item.CustomerOrder.Count()>
+                                @Html.DisplayFor(modelItem => item.CustName)
+                            </td>
+                            <td rowspan=@item.CustomerOrder.Count()>
+                                @Html.DisplayFor(modelItem => item.OrdDate)
+                            </td>
+                            <td>
+                                @custO.ProductName
+                            </td>
+                            <td>
+                                @custO.Stock
+                            </td>
+                            <td rowspan=@item.CustomerOrder.Count()>
+                                @Html.DisplayFor(modelItem => item.Total)
+                            </td>
+                        </tr>
+
+                    }
+                    else
+                    {
+                        <tr>
+                            <td>
+                                @custO.ProductName
+                            </td>
+                            <td>
+                                @custO.Stock
+                            </td>
+                        </tr>
+                    }
+                    ctr++;
 
                 }
-                else
-                {
-                    <tr>
-                        <td>
-                            @custO.ProductName
-                        </td>
-                        <td>
-                            @custO.Stock
-                        </td>
-                    </tr>
-                }
-                ctr++;
 
             }
-
-        }
-    </tbody>
-</table>
+        </tbody>
+    </table>
+}
+else
+{
+    <p>
+        Branch has no order history because no orders have been placed in this location yet
+    </p>
+}

@@ -334,3 +334,18 @@
 2019-10-21 15:12:39.901 -05:00 [INF] 2 customers found
 2019-10-21 15:12:53.496 -05:00 [INF] Order Added
 2019-10-21 15:12:53.600 -05:00 [INF] Order made by customer Marielle Nolasco at Flagship
+2019-10-21 15:28:45.366 -05:00 [INF] Begin Program
+2019-10-21 15:29:15.877 -05:00 [INF] Customer Added!
+2019-10-21 15:29:25.043 -05:00 [INF] Searching for customer Mother 
+2019-10-21 15:29:25.303 -05:00 [INF] 1 customers found
+2019-10-21 15:29:31.968 -05:00 [INF] Viewed order history of Mother Earth
+2019-10-21 15:29:31.968 -05:00 [INF] Customer Mother Earth has no order history because they haven't placed any orders yet
+2019-10-21 15:29:49.279 -05:00 [INF] Searching for customer Mother 
+2019-10-21 15:29:49.374 -05:00 [INF] 1 customers found
+2019-10-21 15:29:59.807 -05:00 [INF] Branch2 has no inventory
+2019-10-21 15:30:10.408 -05:00 [INF] Searching for customer Marielle 
+2019-10-21 15:30:10.476 -05:00 [INF] 2 customers found
+2019-10-21 15:30:17.843 -05:00 [ERR] Something went wrong in placing order
+2019-10-21 15:30:17.843 -05:00 [ERR] Must buy something
+2019-10-21 15:30:24.112 -05:00 [INF] Order Added
+2019-10-21 15:30:24.229 -05:00 [INF] Order made by customer Marielle Nolasco at Flagship
