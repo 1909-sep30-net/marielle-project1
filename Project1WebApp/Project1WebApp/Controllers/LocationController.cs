@@ -66,6 +66,7 @@ namespace Project1WebApp.Controllers
             Location l = _repository.GetLocationByID(id);
             LocationOrderHistoryViewModel local = _mapper.ParseLocationOrderHistory(lORdHist, l);
             Log.Information($"Viewed order history of { _repository.GetLocationByID(id).BranchName}");
+            if (lORdHist.Count < 1) Log.Information($"{ _repository.GetLocationByID(id).BranchName} has no order history because no orders have been placed in this location");
             return View(local);
         }
     }
