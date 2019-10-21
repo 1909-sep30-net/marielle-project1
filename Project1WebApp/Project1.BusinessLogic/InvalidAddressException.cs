@@ -7,7 +7,7 @@ namespace Project1.BusinessLogic
     /// Exception for invalid Address Format i.e. invalid street, city, or zipcode
     /// </summary>
     [Serializable]
-    internal class InvalidAddressException : Exception
+    public class InvalidAddressException : Exception
     {
         public InvalidAddressException()
         {

@@ -11,7 +11,13 @@ namespace Project1WebApp.Controllers
     /// </summary>
     public class LocationController : Controller
     {
+        /// <summary>
+        /// Repository to get data from db in business logic form
+        /// </summary>
         private readonly IRepository _repository;
+        /// <summary>
+        /// Mapper that maps business logic objects to view models
+        /// </summary>
         private VMapper _mapper = new VMapper();
 
         public LocationController(IRepository repository)
@@ -19,7 +25,10 @@ namespace Project1WebApp.Controllers
             _repository = repository;
         }
 
-        // GET: Location
+        /// <summary>
+        /// Action that prints out all available locations
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Index()
         {
             var viewModel = new List<LocationViewModel>();
@@ -30,7 +39,11 @@ namespace Project1WebApp.Controllers
             return View(viewModel);
         }
 
-        // GET: Location Inventory
+        /// <summary>
+        /// Action that takes location inventory of a certain location and prints it out
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public ActionResult GetInventory(int id)
         {
             List<InventoryViewModel> inv = new List<InventoryViewModel>();
@@ -42,7 +55,11 @@ namespace Project1WebApp.Controllers
             return View(inv);
         }
 
-        // GET: Location Order History
+        /// <summary>
+        /// Action that takes location order history and prints it out
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public ActionResult OrderHistory(int id)
         {
             List<Orders> lORdHist = _repository.GetLocationOrderHistory(id);

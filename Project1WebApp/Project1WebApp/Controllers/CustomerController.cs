@@ -11,7 +11,13 @@ namespace Project1WebApp.Controllers
     /// </summary>
     public class CustomerController : Controller
     {
+        /// <summary>
+        /// Repository to get data from database in business logic form
+        /// </summary>
         private readonly IRepository _repository;
+        /// <summary>
+        /// Mapper that maps business logic data to view model data
+        /// </summary>
         private VMapper _mapper = new VMapper();
 
         public CustomerController(IRepository repository)
@@ -19,18 +25,28 @@ namespace Project1WebApp.Controllers
             _repository = repository;
         }
 
-        // GET: Customer
+        /// <summary>
+        /// Primary functions of customer ui
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: Search Detials
+        /// <summary>
+        /// Action that returns search UI
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Search()
         {
             return View();
         }
-
+        /// <summary>
+        /// Action that takes in search parameters 
+        /// </summary>
+        /// <param name="viewModel"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Search(SearchViewModel viewModel)
@@ -46,19 +62,31 @@ namespace Project1WebApp.Controllers
                 return View(viewModel);
             }
         }
-
+        /// <summary>
+        /// Action that returns found customers based on search parameters
+        /// </summary>
+        /// <param name="viewModel"></param>
+        /// <returns></returns>
         public ActionResult Found(SearchViewModel viewModel)
         {
             Log.Information($"{_repository.GetCustomers(viewModel.FirstName, viewModel.LastName).Count} customers found");
             return View(_repository.GetCustomers(viewModel.FirstName, viewModel.LastName));
 
-        }       // GET: Customer/Create
+        }       
+        /// <summary>
+        /// Action that generates UI for customer addition
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Customer/Create
+        /// <summary>
+        /// Action that adds customer from user input data to db via repository
+        /// </summary>
+        /// <param name="viewModel"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(CustomerViewModel viewModel)
@@ -76,7 +104,11 @@ namespace Project1WebApp.Controllers
             }
         }
 
-        // GET: Customer Order History
+        /// <summary>
+        /// Action that gets order history of customer via repository
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public ActionResult GetGetOrderHistory(int id)
         {
             List<Orders> custOrder = _repository.GetCustomerOrderHistory(id);
@@ -86,7 +118,11 @@ namespace Project1WebApp.Controllers
             Log.Information($"Viewed order history of {ViewData["CustName"]}");
             return View(custOrderView);
         }
-
+        /// <summary>
+        /// Action that lets user set location of where an order will be placed 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public ActionResult SetLocation(int id)
         {
             var viewModel = new List<LocationViewModel>();
@@ -98,7 +134,12 @@ namespace Project1WebApp.Controllers
             ViewData["CustID"] = id;
             return View();
         }
-
+        /// <summary>
+        /// Action that takes location and customer to proceed with order
+        /// </summary>
+        /// <param name="LocID"></param>
+        /// <param name="CustID"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult PlaceOrder(int LocID, int CustID)
@@ -106,7 +147,11 @@ namespace Project1WebApp.Controllers
             PlaceOrderViewModelV2 AvailInvent = _mapper.ParseMenu(_repository.GetAvailInventory(LocID), CustID, LocID);
             return View(AvailInvent);
         }
-
+        /// <summary>
+        /// Action that adds an order to db via repository
+        /// </summary>
+        /// <param name="viewModel"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult AddOrder(PlaceOrderViewModelV2 viewModel)
@@ -130,7 +175,11 @@ namespace Project1WebApp.Controllers
                 return View(viewModel);
             }
         }
-
+        /// <summary>
+        /// Action that prints order details with data from adding an order
+        /// </summary>
+        /// <param name="viewModel"></param>
+        /// <returns></returns>
         public ActionResult OrderDetails(PlaceOrderViewModelV2 viewModel)
         {
             Orders o = new Orders()

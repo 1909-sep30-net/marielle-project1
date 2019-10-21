@@ -7,7 +7,7 @@ namespace Project1.BusinessLogic
     /// Exceptions in customer class mostly from invalid or null inputs to properties 
     /// </summary>
     [Serializable]
-    internal class CustomerException : Exception
+    public class CustomerException : Exception
     {
         public CustomerException()
         {
