@@ -142,7 +142,7 @@ namespace Project1.DataAccess
         /// </summary>
         /// <param name="custOrder"></param>
         /// <returns></returns>
-        private decimal CalculateTotal(List<BusinessLogic.Inventory> custOrder)
+        public decimal CalculateTotal(List<BusinessLogic.Inventory> custOrder)
         {
            decimal total = 0;
             foreach(BusinessLogic.Inventory item in custOrder)

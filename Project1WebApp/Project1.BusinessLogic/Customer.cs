@@ -1,12 +1,11 @@
-﻿using System;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 
 namespace Project1.BusinessLogic
 {
-     /// <summary>
-     /// Customer format of the program
-     /// UI interacts with this format of customer
-     /// </summary>
+    /// <summary>
+    /// Customer format of the program
+    /// UI interacts with this format of customer
+    /// </summary>
     public class Customer
     {
         private string firstName;
@@ -37,11 +36,11 @@ namespace Project1.BusinessLogic
             }
         }
 
-
         /// <summary>
         /// Last Name Property of Customer Class (Includes format validation)
         /// </summary>
-        public string LastName {
+        public string LastName
+        {
             get => lastName;
             set
             {
@@ -56,25 +55,29 @@ namespace Project1.BusinessLogic
                 }
             }
         }
+
         //<summary>
         ///Street Property of Customer class(Includes format validation)
         /// </summary>
         public string Street
         {
             get => street;
-            set {
+            set
+            {
                 if (value == null) throw new InvalidAddressException("Invalid Street");
                 else if (Regex.Match(value, @"\s*\d+\s[A-z0-9]+\s*?(\s[A-z])*").Success) street = value;
                 else
                 {
                     throw new InvalidAddressException("Invalid Street");
                 }
-            } }
+            }
+        }
 
         /// <summary>
         /// City Property of Customer class(Includes format validation)
         /// </summary>
-        public string City {
+        public string City
+        {
             get
             {
                 return city;
@@ -105,6 +108,7 @@ namespace Project1.BusinessLogic
                 else { throw new InvalidAddressException("Invalid Zipcode"); }
             }
         }
+
         public int CustID { get; set; }
 
         /// <summary>

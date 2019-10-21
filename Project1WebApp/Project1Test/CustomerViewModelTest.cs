@@ -1,23 +1,23 @@
-﻿using Project1.BusinessLogic;
+﻿using Project1WebApp.Models;
 using Xunit;
 
 namespace Project1Test
 {
-    public class CustomerTest
+    public class CustomerViewModelTest
     {
         [Fact]
         public void CustomerShouldValidateStrings()
         {
             try
             {
-                Customer c = new Customer()
+                CustomerViewModel c = new CustomerViewModel()
                 {
                     FirstName = "",
                     LastName = ""
                 };
                 Assert.True(false, "Failed");
             }
-            catch (CustomerException)
+            catch
             {
                 Assert.True(true);
             }
@@ -31,12 +31,12 @@ namespace Project1Test
         {
             try
             {
-                new Customer()
+                new CustomerViewModel()
                 {
                     Street = input
                 };
             }
-            catch (InvalidAddressException e)
+            catch
             {
                 Assert.True(true);
             }
@@ -50,12 +50,12 @@ namespace Project1Test
         {
             try
             {
-                new Customer()
+                new CustomerViewModel()
                 {
                     Street = input
                 };
             }
-            catch (InvalidAddressException e)
+            catch
             {
                 Assert.True(false);
             }
@@ -69,12 +69,12 @@ namespace Project1Test
         {
             try
             {
-                new Customer()
+                new CustomerViewModel()
                 {
                     City = input
                 };
             }
-            catch (InvalidAddressException e)
+            catch
             {
                 Assert.True(true);
             }
@@ -88,12 +88,12 @@ namespace Project1Test
         {
             try
             {
-                new Customer()
+                new CustomerViewModel()
                 {
                     City = input
                 };
             }
-            catch (InvalidAddressException e)
+            catch
             {
                 Assert.True(false);
             }
@@ -107,12 +107,12 @@ namespace Project1Test
         {
             try
             {
-                new Customer()
+                new CustomerViewModel()
                 {
                     Zipcode = input
                 };
             }
-            catch (InvalidAddressException e)
+            catch
             {
                 Assert.True(true);
             }
@@ -126,12 +126,12 @@ namespace Project1Test
         {
             try
             {
-                new Customer()
+                new CustomerViewModel()
                 {
                     Zipcode = input
                 };
             }
-            catch (InvalidAddressException e)
+            catch
             {
                 Assert.True(false);
             }
