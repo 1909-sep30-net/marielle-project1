@@ -145,18 +145,17 @@ namespace Project1WebApp.Models
             return availInv;
         }
 
-        internal List<Inventory> ParseInvID(List<int> custBought, List<int> quantity)
+        internal List<Inventory> ParseInvID(Dictionary<int, int>custBought)
         {
             List<Inventory> inv = new List<Inventory>();
-            int i = 0;
-            foreach (int item in custBought)
+            foreach (KeyValuePair<int, int> item in custBought)
             {
+                if (item.Value == 0) continue;
                 inv.Add(new Inventory()
                 {
-                    InventID = item,
-                    Stock = quantity[i]
+                    InventID = item.Key,
+                    Stock = item.Value
                 });
-                i++;
             }
             return inv;
         }

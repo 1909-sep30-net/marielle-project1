@@ -39,6 +39,7 @@ namespace Project1.DataAccess
         /// <param name="o"></param>
         public void AddOrder(BL.Orders o)
         {
+            if (o.CustOrder.Count < 1) throw new InvalidQuantityException("Must buy something");
             UpdateInventory(o.CustOrder);
             _context.Orders.Add(_map.ParseOrders(o));
             _context.SaveChanges();
@@ -170,6 +171,9 @@ namespace Project1.DataAccess
         {
             return _context.Product.Single(p => p.ProductId == _context.Inventory.Single(inv => inv.InventoryId == inventID).ProductId).Price;
         }
+
+        
+
         /// <summary>
         /// Method that updates the inventory upon placing an order
         /// </summary>
@@ -179,7 +183,9 @@ namespace Project1.DataAccess
             Inventory dbInv = new Inventory();
             foreach (BL.Inventory item in i)
             {
+                if (item.Stock < 1) throw new InvalidQuantityException("Quantity must be greater than 0");
                 dbInv = _context.Inventory.Single(inv => inv.InventoryId == item.InventID);
+                
                 if (dbInv.Stock < item.Stock) throw new StockInsufficientException("Stock Insufficient");
                 dbInv.Stock = dbInv.Stock - item.Stock;
             }

@@ -1,9 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using Project1.BusinessLogic;
 using Project1WebApp.Models;
 using Serilog;
 using System.Collections.Generic;
-
 namespace Project1WebApp.Controllers
 {
     /// <summary>
@@ -15,6 +16,7 @@ namespace Project1WebApp.Controllers
         /// Repository to get data from database in business logic form
         /// </summary>
         private readonly IRepository _repository;
+
         /// <summary>
         /// Mapper that maps business logic data to view model data
         /// </summary>
@@ -42,8 +44,9 @@ namespace Project1WebApp.Controllers
         {
             return View();
         }
+
         /// <summary>
-        /// Action that takes in search parameters 
+        /// Action that takes in search parameters
         /// </summary>
         /// <param name="viewModel"></param>
         /// <returns></returns>
@@ -62,6 +65,7 @@ namespace Project1WebApp.Controllers
                 return View(viewModel);
             }
         }
+
         /// <summary>
         /// Action that returns found customers based on search parameters
         /// </summary>
@@ -71,8 +75,8 @@ namespace Project1WebApp.Controllers
         {
             Log.Information($"{_repository.GetCustomers(viewModel.FirstName, viewModel.LastName).Count} customers found");
             return View(_repository.GetCustomers(viewModel.FirstName, viewModel.LastName));
+        }
 
-        }       
         /// <summary>
         /// Action that generates UI for customer addition
         /// </summary>
@@ -118,8 +122,9 @@ namespace Project1WebApp.Controllers
             Log.Information($"Viewed order history of {ViewData["CustName"]}");
             return View(custOrderView);
         }
+
         /// <summary>
-        /// Action that lets user set location of where an order will be placed 
+        /// Action that lets user set location of where an order will be placed
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -134,6 +139,7 @@ namespace Project1WebApp.Controllers
             ViewData["CustID"] = id;
             return View();
         }
+
         /// <summary>
         /// Action that takes location and customer to proceed with order
         /// </summary>
@@ -147,34 +153,51 @@ namespace Project1WebApp.Controllers
             PlaceOrderViewModelV2 AvailInvent = _mapper.ParseMenu(_repository.GetAvailInventory(LocID), CustID, LocID);
             return View(AvailInvent);
         }
+        public ActionResult PlaceOrder()
+        {
+            var value = HttpContext.Session.GetString("CustID");
+            int CustID = JsonConvert.DeserializeObject<int>(value);
+            value = HttpContext.Session.GetString("LocID");
+            int LocID = JsonConvert.DeserializeObject<int>(value);
+            PlaceOrderViewModelV2 AvailInvent = _mapper.ParseMenu(_repository.GetAvailInventory(LocID), CustID, LocID);
+            return View(AvailInvent);
+        }
         /// <summary>
         /// Action that adds an order to db via repository
         /// </summary>
         /// <param name="viewModel"></param>
         /// <returns></returns>
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult AddOrder(PlaceOrderViewModelV2 viewModel)
         {
             try
             {
+                HttpContext.Session.SetString("CustID", JsonConvert.SerializeObject(viewModel.CustID));
+                HttpContext.Session.SetString("LocID", JsonConvert.SerializeObject(viewModel.LocID));
                 Orders o = new Orders()
                 {
                     Cust = _repository.GetCustomerById(viewModel.CustID),
                     Location = _repository.GetLocationByID(viewModel.LocID),
-                    CustOrder = _mapper.ParseInvID(viewModel.custBought, viewModel.Quantity)
+                    CustOrder = _mapper.ParseInvID(viewModel.custBought)
                 };
                 _repository.AddOrder(o);
+                Dictionary<int, int> custB = viewModel.custBought;
+                HttpContext.Session.SetString("CustOrder", JsonConvert.SerializeObject(custB));
+
                 Log.Information("Order Added");
                 Log.Information($"Order made by customer {_repository.GetCustomerById(viewModel.CustID).FirstName} {_repository.GetCustomerById(viewModel.CustID).LastName} at {_repository.GetLocationByID(viewModel.LocID).BranchName}");
-                return RedirectToAction(nameof(OrderDetails), viewModel);
+                PlaceOrderViewModelV2 pass = new PlaceOrderViewModelV2() { custBought = viewModel.custBought, CustID = viewModel.CustID, LocID = viewModel.LocID };
+                return RedirectToAction(nameof(OrderDetails), pass);
             }
             catch
             {
                 Log.Error("Something went wrong in placing order");
-                return View(viewModel);
+                return RedirectToAction(nameof(PlaceOrder));
             }
         }
+
         /// <summary>
         /// Action that prints order details with data from adding an order
         /// </summary>
@@ -182,11 +205,13 @@ namespace Project1WebApp.Controllers
         /// <returns></returns>
         public ActionResult OrderDetails(PlaceOrderViewModelV2 viewModel)
         {
+            var value = HttpContext.Session.GetString("CustOrder");
+            Dictionary<int, int> custOrder = JsonConvert.DeserializeObject<Dictionary<int, int>>(value);
             Orders o = new Orders()
             {
                 Cust = _repository.GetCustomerById(viewModel.CustID),
                 Location = _repository.GetLocationByID(viewModel.LocID),
-                CustOrder = _mapper.ParseInvID(viewModel.custBought, viewModel.Quantity)
+                CustOrder = _mapper.ParseInvID(custOrder)
             };
             OrderDetailsViewModel ordDeets = _mapper.ParseOrderDetails(o);
             decimal total = 0;

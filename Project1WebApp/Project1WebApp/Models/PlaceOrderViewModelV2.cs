@@ -10,9 +10,7 @@ namespace Project1WebApp.Models
     {
         public List<AvailInvViewModel> availInventory { get; set; }
         [Required]
-        public List<int> custBought { get; set; }
-        [Range(0, int.MaxValue)]
-        public List<int> Quantity { get; set; }
+        public Dictionary<int, int> custBought { get; set; }
         [Required]
         public int CustID { get; set; }
         [Required]

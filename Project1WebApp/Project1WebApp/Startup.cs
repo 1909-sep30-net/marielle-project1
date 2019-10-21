@@ -36,6 +36,9 @@ namespace Project1WebApp
             services.AddScoped<IRepository, Repository>();
 
             services.AddControllersWithViews();
+            services.AddDistributedMemoryCache();
+            services.AddSession();
+
 
         }
 
@@ -54,7 +57,7 @@ namespace Project1WebApp
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseSession();
             app.UseRouting();
 
             app.UseAuthorization();

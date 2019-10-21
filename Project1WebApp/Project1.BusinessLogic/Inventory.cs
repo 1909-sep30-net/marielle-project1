@@ -1,4 +1,6 @@
-﻿namespace Project1.BusinessLogic
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Project1.BusinessLogic
 {
     /// <summary>
     /// Defines what is in inventory

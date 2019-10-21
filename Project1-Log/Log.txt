@@ -6,3 +6,247 @@
 2019-10-19 16:24:57.440 -05:00 [INF] Begin Program
 2019-10-19 16:25:15.602 -05:00 [INF] Searching for customer  Nolasco
 2019-10-19 16:25:18.810 -05:00 [INF] 3 customers found
+2019-10-20 21:09:21.367 -05:00 [INF] Begin Program
+2019-10-20 21:10:03.395 -05:00 [ERR] Something went wrong when adding a customer
+2019-10-20 21:10:31.553 -05:00 [INF] Customer Added!
+2019-10-20 21:10:44.173 -05:00 [INF] Searching for customer Heidi 
+2019-10-20 21:10:44.773 -05:00 [INF] 1 customers found
+2019-10-20 21:11:15.927 -05:00 [INF] Order Added
+2019-10-20 21:11:16.043 -05:00 [INF] Order made by customer Heidi Klum at Flagship
+2019-10-20 21:14:02.076 -05:00 [INF] Begin Program
+2019-10-20 21:14:19.440 -05:00 [INF] Searching for customer Heidi 
+2019-10-20 21:14:22.259 -05:00 [INF] 1 customers found
+2019-10-20 21:14:36.006 -05:00 [INF] Order Added
+2019-10-20 21:14:36.124 -05:00 [INF] Order made by customer Heidi Klum at Flagship
+2019-10-20 21:16:37.659 -05:00 [INF] Begin Program
+2019-10-20 21:16:51.946 -05:00 [INF] Searching for customer Heidi 
+2019-10-20 21:16:54.869 -05:00 [INF] 1 customers found
+2019-10-20 21:17:06.806 -05:00 [INF] Order Added
+2019-10-20 21:17:06.913 -05:00 [INF] Order made by customer Heidi Klum at Flagship
+2019-10-20 21:17:45.819 -05:00 [INF] Begin Program
+2019-10-20 21:17:58.580 -05:00 [INF] Searching for customer Heidi 
+2019-10-20 21:18:01.412 -05:00 [INF] 1 customers found
+2019-10-20 21:18:12.116 -05:00 [ERR] Something went wrong in placing order
+2019-10-20 21:20:39.685 -05:00 [INF] Begin Program
+2019-10-20 21:20:56.031 -05:00 [INF] Searching for customer Marielle 
+2019-10-20 21:20:58.875 -05:00 [INF] 3 customers found
+2019-10-20 21:21:11.210 -05:00 [ERR] Something went wrong in placing order
+2019-10-20 21:24:53.676 -05:00 [INF] Begin Program
+2019-10-20 21:25:20.105 -05:00 [INF] Viewed order history of Flagship
+2019-10-20 22:43:55.018 -05:00 [INF] Begin Program
+2019-10-20 22:44:37.240 -05:00 [INF] Begin Program
+2019-10-20 22:44:49.287 -05:00 [INF] Searching for customer Heidi 
+2019-10-20 22:44:52.751 -05:00 [INF] 1 customers found
+2019-10-20 22:45:03.576 -05:00 [ERR] Something went wrong in placing order
+2019-10-20 22:47:53.372 -05:00 [INF] Begin Program
+2019-10-20 22:48:05.198 -05:00 [INF] Searching for customer Heidi 
+2019-10-20 22:48:08.056 -05:00 [INF] 1 customers found
+2019-10-20 22:50:02.406 -05:00 [INF] Begin Program
+2019-10-20 22:50:15.885 -05:00 [INF] Searching for customer Marielle 
+2019-10-20 22:50:19.247 -05:00 [INF] 3 customers found
+2019-10-20 22:52:16.785 -05:00 [INF] Begin Program
+2019-10-20 22:52:28.306 -05:00 [INF] Searching for customer Marielle 
+2019-10-20 22:52:32.144 -05:00 [INF] 3 customers found
+2019-10-20 22:55:30.585 -05:00 [INF] Begin Program
+2019-10-20 22:55:45.384 -05:00 [INF] Searching for customer Marielle 
+2019-10-20 22:55:48.379 -05:00 [INF] 3 customers found
+2019-10-20 22:57:06.408 -05:00 [INF] Begin Program
+2019-10-20 22:57:17.588 -05:00 [INF] Searching for customer Marielle 
+2019-10-20 22:57:21.913 -05:00 [INF] 3 customers found
+2019-10-20 23:16:33.501 -05:00 [INF] Begin Program
+2019-10-20 23:16:50.535 -05:00 [INF] Searching for customer Heidi 
+2019-10-20 23:16:53.467 -05:00 [INF] 1 customers found
+2019-10-20 23:18:13.472 -05:00 [INF] Begin Program
+2019-10-20 23:23:33.713 -05:00 [INF] Begin Program
+2019-10-20 23:23:45.033 -05:00 [INF] Searching for customer Heidi 
+2019-10-20 23:23:48.084 -05:00 [INF] 1 customers found
+2019-10-20 23:30:59.769 -05:00 [INF] Begin Program
+2019-10-20 23:31:11.300 -05:00 [INF] Searching for customer Anna 
+2019-10-20 23:31:14.359 -05:00 [INF] 1 customers found
+2019-10-20 23:33:54.403 -05:00 [INF] Begin Program
+2019-10-20 23:34:05.938 -05:00 [INF] Searching for customer Anna 
+2019-10-20 23:34:08.804 -05:00 [INF] 1 customers found
+2019-10-21 00:08:36.656 -05:00 [INF] Begin Program
+2019-10-21 00:08:48.709 -05:00 [INF] Searching for customer Marielle 
+2019-10-21 00:08:50.324 -05:00 [INF] 3 customers found
+2019-10-21 00:10:12.592 -05:00 [INF] Begin Program
+2019-10-21 00:10:20.907 -05:00 [INF] Searching for customer Marielle 
+2019-10-21 00:10:22.098 -05:00 [INF] 3 customers found
+2019-10-21 00:11:39.230 -05:00 [INF] Begin Program
+2019-10-21 00:11:48.923 -05:00 [INF] Searching for customer Marielle 
+2019-10-21 00:11:50.058 -05:00 [INF] 3 customers found
+2019-10-21 00:12:01.847 -05:00 [INF] Order Added
+2019-10-21 00:12:01.944 -05:00 [INF] Order made by customer Marielle Nolasco at Flagship
+2019-10-21 09:48:37.482 -05:00 [INF] Begin Program
+2019-10-21 09:48:52.544 -05:00 [INF] Searching for customer Heidi 
+2019-10-21 09:48:56.109 -05:00 [INF] 1 customers found
+2019-10-21 10:01:15.686 -05:00 [INF] Begin Program
+2019-10-21 10:01:33.676 -05:00 [INF] Searching for customer Heidi 
+2019-10-21 10:01:36.508 -05:00 [INF] 1 customers found
+2019-10-21 10:02:00.234 -05:00 [INF] Order Added
+2019-10-21 10:02:00.374 -05:00 [INF] Order made by customer Heidi Klum at Flagship
+2019-10-21 10:05:58.578 -05:00 [INF] Begin Program
+2019-10-21 10:06:16.669 -05:00 [INF] Searching for customer Heidi 
+2019-10-21 10:06:19.583 -05:00 [INF] 1 customers found
+2019-10-21 10:06:40.451 -05:00 [INF] Order Added
+2019-10-21 10:06:40.582 -05:00 [INF] Order made by customer Heidi Klum at Flagship
+2019-10-21 10:09:10.504 -05:00 [INF] Begin Program
+2019-10-21 10:10:15.219 -05:00 [INF] Begin Program
+2019-10-21 10:10:53.187 -05:00 [INF] Begin Program
+2019-10-21 10:11:50.629 -05:00 [INF] Begin Program
+2019-10-21 10:14:22.448 -05:00 [INF] Begin Program
+2019-10-21 10:14:38.198 -05:00 [INF] Searching for customer Marielle 
+2019-10-21 10:14:41.030 -05:00 [INF] 3 customers found
+2019-10-21 10:14:51.419 -05:00 [ERR] Something went wrong in placing order
+2019-10-21 10:15:51.024 -05:00 [INF] Begin Program
+2019-10-21 10:16:02.743 -05:00 [INF] Searching for customer Marielle 
+2019-10-21 10:16:05.875 -05:00 [INF] 3 customers found
+2019-10-21 10:16:22.263 -05:00 [INF] Order Added
+2019-10-21 10:16:22.403 -05:00 [INF] Order made by customer Marielle Nolasco at Flagship
+2019-10-21 10:17:07.816 -05:00 [INF] Begin Program
+2019-10-21 10:17:19.791 -05:00 [INF] Searching for customer Marielle 
+2019-10-21 10:17:22.834 -05:00 [INF] 3 customers found
+2019-10-21 10:17:39.239 -05:00 [INF] Order Added
+2019-10-21 10:17:39.363 -05:00 [INF] Order made by customer Marielle Nolasco at Flagship
+2019-10-21 10:30:33.288 -05:00 [INF] Begin Program
+2019-10-21 10:30:45.575 -05:00 [INF] Searching for customer Anna 
+2019-10-21 10:30:48.518 -05:00 [INF] 1 customers found
+2019-10-21 10:31:05.146 -05:00 [INF] Order Added
+2019-10-21 10:31:05.260 -05:00 [INF] Order made by customer Anna Magdaraog at Flagship
+2019-10-21 10:49:23.705 -05:00 [INF] Begin Program
+2019-10-21 10:49:36.697 -05:00 [INF] Searching for customer Marielle 
+2019-10-21 10:49:39.531 -05:00 [INF] 3 customers found
+2019-10-21 10:49:53.907 -05:00 [INF] Order Added
+2019-10-21 10:49:54.035 -05:00 [INF] Order made by customer Marielle Nolasco at Flagship
+2019-10-21 10:53:31.805 -05:00 [INF] Begin Program
+2019-10-21 10:53:44.422 -05:00 [INF] Searching for customer Marielle 
+2019-10-21 10:53:47.056 -05:00 [INF] 3 customers found
+2019-10-21 10:53:58.581 -05:00 [ERR] Something went wrong in placing order
+2019-10-21 10:54:36.017 -05:00 [INF] Begin Program
+2019-10-21 10:54:47.959 -05:00 [INF] Searching for customer Marielle 
+2019-10-21 10:54:50.895 -05:00 [INF] 3 customers found
+2019-10-21 10:55:07.803 -05:00 [ERR] Something went wrong in placing order
+2019-10-21 10:56:30.286 -05:00 [INF] Begin Program
+2019-10-21 10:56:42.673 -05:00 [INF] Searching for customer Marielle 
+2019-10-21 10:56:45.540 -05:00 [INF] 3 customers found
+2019-10-21 10:58:56.038 -05:00 [INF] Begin Program
+2019-10-21 10:59:11.137 -05:00 [INF] Searching for customer Marielle 
+2019-10-21 10:59:13.921 -05:00 [INF] 3 customers found
+2019-10-21 10:59:59.461 -05:00 [INF] Order Added
+2019-10-21 11:00:01.227 -05:00 [INF] Order made by customer Marielle Nolasco at Flagship
+2019-10-21 11:05:39.435 -05:00 [INF] Begin Program
+2019-10-21 11:05:50.729 -05:00 [INF] Searching for customer Marielle 
+2019-10-21 11:05:53.544 -05:00 [INF] 3 customers found
+2019-10-21 11:05:59.798 -05:00 [INF] Viewed order history of Marielle Nolasco
+2019-10-21 11:06:29.832 -05:00 [INF] Searching for customer Marielle 
+2019-10-21 11:06:30.009 -05:00 [INF] 3 customers found
+2019-10-21 11:06:44.736 -05:00 [INF] Order Added
+2019-10-21 11:06:44.889 -05:00 [INF] Order made by customer Marielle Nolasco at Flagship
+2019-10-21 11:06:55.117 -05:00 [INF] Searching for customer Marielle 
+2019-10-21 11:06:55.263 -05:00 [INF] 3 customers found
+2019-10-21 11:06:57.828 -05:00 [INF] Viewed order history of Marielle Nolasco
+2019-10-21 11:10:25.901 -05:00 [INF] Begin Program
+2019-10-21 11:10:40.490 -05:00 [INF] Searching for customer Marielle 
+2019-10-21 11:10:43.401 -05:00 [INF] 3 customers found
+2019-10-21 11:10:59.016 -05:00 [INF] Order Added
+2019-10-21 11:10:59.171 -05:00 [INF] Order made by customer Marielle Nolasco at Flagship
+2019-10-21 11:15:15.837 -05:00 [INF] Begin Program
+2019-10-21 11:15:28.478 -05:00 [INF] Searching for customer Marielle 
+2019-10-21 11:15:31.339 -05:00 [INF] 3 customers found
+2019-10-21 11:16:06.267 -05:00 [INF] Order Added
+2019-10-21 11:16:09.453 -05:00 [INF] Order made by customer Marielle Nolasco at Flagship
+2019-10-21 11:18:51.555 -05:00 [INF] Begin Program
+2019-10-21 11:19:04.117 -05:00 [INF] Searching for customer Marielle 
+2019-10-21 11:19:07.169 -05:00 [INF] 3 customers found
+2019-10-21 11:19:32.987 -05:00 [INF] Order Added
+2019-10-21 11:19:34.966 -05:00 [INF] Order made by customer Marielle Nolasco at Branch1
+2019-10-21 11:22:52.391 -05:00 [INF] Begin Program
+2019-10-21 11:23:04.432 -05:00 [INF] Searching for customer Marielle 
+2019-10-21 11:23:07.455 -05:00 [INF] 3 customers found
+2019-10-21 11:23:19.928 -05:00 [INF] Order Added
+2019-10-21 11:23:20.075 -05:00 [INF] Order made by customer Marielle Nolasco at Flagship
+2019-10-21 11:24:28.116 -05:00 [INF] Begin Program
+2019-10-21 11:24:41.504 -05:00 [INF] Searching for customer Marielle 
+2019-10-21 11:24:44.337 -05:00 [INF] 3 customers found
+2019-10-21 11:24:57.440 -05:00 [INF] Order Added
+2019-10-21 11:24:57.592 -05:00 [INF] Order made by customer Marielle Nolasco at Flagship
+2019-10-21 11:39:13.430 -05:00 [INF] Begin Program
+2019-10-21 11:39:26.465 -05:00 [INF] Searching for customer Marielle 
+2019-10-21 11:39:29.633 -05:00 [INF] 3 customers found
+2019-10-21 11:39:43.074 -05:00 [INF] Order Added
+2019-10-21 11:39:43.228 -05:00 [INF] Order made by customer Marielle Nolasco at Flagship
+2019-10-21 11:58:01.633 -05:00 [INF] Begin Program
+2019-10-21 11:58:25.559 -05:00 [INF] Searching for customer Marielle 
+2019-10-21 11:58:29.098 -05:00 [INF] 3 customers found
+2019-10-21 11:58:43.745 -05:00 [INF] Order Added
+2019-10-21 11:58:43.865 -05:00 [INF] Order made by customer Marielle Nolasco at Flagship
+2019-10-21 12:19:05.462 -05:00 [INF] Begin Program
+2019-10-21 12:19:20.522 -05:00 [INF] Searching for customer Marielle 
+2019-10-21 12:19:23.439 -05:00 [INF] 3 customers found
+2019-10-21 12:19:35.948 -05:00 [INF] Order Added
+2019-10-21 12:19:36.063 -05:00 [INF] Order made by customer Marielle Nolasco at Flagship
+2019-10-21 12:20:25.523 -05:00 [INF] Begin Program
+2019-10-21 12:20:37.878 -05:00 [INF] Searching for customer Heidi 
+2019-10-21 12:20:40.820 -05:00 [INF] 1 customers found
+2019-10-21 12:20:52.928 -05:00 [INF] Order Added
+2019-10-21 12:20:53.040 -05:00 [INF] Order made by customer Heidi Klum at Flagship
+2019-10-21 12:28:51.446 -05:00 [INF] Begin Program
+2019-10-21 12:29:08.061 -05:00 [INF] Searching for customer Heidi 
+2019-10-21 12:29:10.886 -05:00 [INF] 1 customers found
+2019-10-21 12:58:03.901 -05:00 [INF] Begin Program
+2019-10-21 12:58:14.076 -05:00 [INF] Searching for customer Heidi 
+2019-10-21 12:58:15.330 -05:00 [INF] 1 customers found
+2019-10-21 12:58:22.246 -05:00 [ERR] Something went wrong in placing order
+2019-10-21 13:02:07.146 -05:00 [INF] Begin Program
+2019-10-21 13:02:24.027 -05:00 [INF] Searching for customer Marielle 
+2019-10-21 13:02:25.230 -05:00 [INF] 3 customers found
+2019-10-21 13:02:31.017 -05:00 [ERR] Something went wrong in placing order
+2019-10-21 13:04:22.398 -05:00 [INF] Begin Program
+2019-10-21 13:04:56.211 -05:00 [INF] Begin Program
+2019-10-21 13:05:06.425 -05:00 [INF] Searching for customer Marielle 
+2019-10-21 13:05:07.599 -05:00 [INF] 3 customers found
+2019-10-21 13:05:14.004 -05:00 [ERR] Something went wrong in placing order
+2019-10-21 13:05:21.488 -05:00 [INF] Order Added
+2019-10-21 13:05:21.589 -05:00 [INF] Order made by customer Marielle Nolasco at Flagship
+2019-10-21 13:17:22.505 -05:00 [INF] Begin Program
+2019-10-21 13:17:39.637 -05:00 [INF] Customer Added!
+2019-10-21 13:17:46.690 -05:00 [INF] Searching for customer Marielle 
+2019-10-21 13:17:46.954 -05:00 [INF] 1 customers found
+2019-10-21 13:18:00.422 -05:00 [INF] Order Added
+2019-10-21 13:18:00.526 -05:00 [INF] Order made by customer Marielle Nolasco at Flagship
+2019-10-21 13:18:09.249 -05:00 [INF] Searching for customer Marielle 
+2019-10-21 13:18:09.320 -05:00 [INF] 1 customers found
+2019-10-21 13:18:11.072 -05:00 [INF] Viewed order history of Marielle Nolasco
+2019-10-21 13:19:20.169 -05:00 [INF] Begin Program
+2019-10-21 13:19:29.015 -05:00 [INF] Searching for customer Marielle 
+2019-10-21 13:19:30.201 -05:00 [INF] 1 customers found
+2019-10-21 13:19:42.875 -05:00 [INF] Order Added
+2019-10-21 13:19:42.993 -05:00 [INF] Order made by customer Marielle Nolasco at Flagship
+2019-10-21 13:19:53.709 -05:00 [INF] Searching for customer Marielle 
+2019-10-21 13:19:53.780 -05:00 [INF] 1 customers found
+2019-10-21 13:20:09.041 -05:00 [INF] Order Added
+2019-10-21 13:20:09.174 -05:00 [INF] Order made by customer Marielle Nolasco at Flagship
+2019-10-21 13:20:24.880 -05:00 [INF] Searching for customer Marielle 
+2019-10-21 13:20:24.962 -05:00 [INF] 1 customers found
+2019-10-21 13:20:27.231 -05:00 [INF] Viewed order history of Marielle Nolasco
+2019-10-21 13:28:36.346 -05:00 [INF] Begin Program
+2019-10-21 13:28:45.660 -05:00 [INF] Searching for customer Marielle 
+2019-10-21 13:28:46.919 -05:00 [INF] 1 customers found
+2019-10-21 13:31:25.068 -05:00 [INF] Begin Program
+2019-10-21 13:31:36.314 -05:00 [INF] Searching for customer Marielle 
+2019-10-21 13:31:37.526 -05:00 [INF] 1 customers found
+2019-10-21 13:31:53.842 -05:00 [INF] Order Added
+2019-10-21 13:31:53.943 -05:00 [INF] Order made by customer Marielle Nolasco at Flagship
+2019-10-21 13:32:35.168 -05:00 [INF] Begin Program
+2019-10-21 13:32:47.256 -05:00 [INF] Searching for customer Marielle 
+2019-10-21 13:32:48.475 -05:00 [INF] 1 customers found
+2019-10-21 13:32:54.864 -05:00 [ERR] Something went wrong in placing order
+2019-10-21 13:32:56.644 -05:00 [ERR] Something went wrong in placing order
+2019-10-21 13:33:04.522 -05:00 [INF] Order Added
+2019-10-21 13:33:04.623 -05:00 [INF] Order made by customer Marielle Nolasco at Flagship
+2019-10-21 13:33:29.220 -05:00 [INF] Begin Program
+2019-10-21 13:33:50.803 -05:00 [INF] Customer Added!
+2019-10-21 13:33:59.408 -05:00 [INF] Searching for customer Javon 
+2019-10-21 13:33:59.657 -05:00 [INF] 1 customers found
+2019-10-21 13:34:16.019 -05:00 [INF] Order Added
+2019-10-21 13:34:16.121 -05:00 [INF] Order made by customer Javon Negahban at Flagship

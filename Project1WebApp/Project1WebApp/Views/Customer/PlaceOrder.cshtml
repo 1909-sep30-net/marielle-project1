@@ -4,8 +4,7 @@
     ViewData["Title"] = "PlaceOrderV2";
 }
 
-<h1>PlaceOrderV2</h1>
-
+<h1>Place Order</h1>
 <form asp-action="AddOrder">
     <div class="form-inline">
 
@@ -15,13 +14,9 @@
             <th>
                 Product
             </th>
-            <th>
-            </th>
+
             <th>
                 Price
-            </th>
-            <th>
-                Stock
             </th>
             <th>
                 Quantity
@@ -32,33 +27,28 @@
                 @foreach (AvailInvViewModel item in Model.availInventory)
                 {
                     <tr>
-                        <td colspan="2">
-                            <label class="control-label">
-                                <input type="checkbox"
-                                       name="@nameof(Model.custBought)"
-                                       value="@item.InventID" class="form-control"/> @item.ProductName
-                                </label>
-                            </td>
-                            <td>
-                                @item.Price
-                            </td>
-                            <td>
-                                @item.Stock
-                            </td>
-                            <td>
-                                
-                                <input asp-for="@(Model.Quantity)" class="form-control" />
-                                <span asp-validation-for="@(Model.Quantity)" class="text-danger"></span>
-                            </td>
-                        </tr>
-                    }
+                        <td>
+
+                            @item.ProductName
+                        </td>
+                        <td>
+                            @String.Format("{0:c}", item.Price)
+                        </td>
+                        <td>
+                            @Html.DropDownListFor(m => m.custBought[item.InventID], Enumerable.Range(0, item.Stock + 1).Select(x => new SelectListItem
+                       {
+                           Value = x.ToString(),
+                           Text = x.ToString()
+                       }))
+                            <span asp-validation-for="@(Model.custBought)" class="text-danger"></span>
+                        </td>
+                    </tr>
+                }
             </tbody>
         </table>
-
     </div>
     @Html.Hidden("CustID", Model.CustID)
     @Html.Hidden("LocID", Model.LocID)
-
     <div class="form-group">
         <input type="submit" value="Place Order" class="btn btn-primary" />
     </div>

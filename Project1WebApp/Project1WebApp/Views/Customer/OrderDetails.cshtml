@@ -28,7 +28,7 @@
                     @item.ProductName
                 </td>
                 <td>
-                    @item.Price
+                    @String.Format("{0:c}", item.Price)
                 </td>
                 <td>
                     @item.Stock
@@ -37,6 +37,6 @@
         }
     </tbody>
 </table>
-<h6>Total: @ViewData["Total"]</h6>
+<h6>Total:  @String.Format("{0:c}", ViewData["Total"])</h6>
 <a asp-action="Home"/>
 
