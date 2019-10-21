@@ -100,7 +100,7 @@ namespace Project1WebApp.Controllers
             try
             {
                 _repository.AddCustomer(_mapper.ParseCustomer(viewModel));
-                Log.Information("Customer Added!");
+                Log.Information($"Customer Added! Name: {viewModel.FirstName} {viewModel.LastName}");
                 return RedirectToAction(nameof(HomeController.Index));
             }
             catch (Exception e)
