@@ -40,7 +40,7 @@ namespace Project1.DataAccess
         /// <param name="o"></param>
         public void AddOrder(BL.Orders o)
         {
-            if (o.CustOrder.Count < 1) throw new InvalidQuantityException("Must buy something");
+            if (o.CustOrder.Count < 1) throw new InvalidQuantityException("Customer bought no products.");
             UpdateInventory(o.CustOrder);
             _context.Orders.Add(_map.ParseOrders(o));
             _context.SaveChanges();
