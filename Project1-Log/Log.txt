@@ -30,3 +30,24 @@
 2019-10-21 17:48:21.445 -05:00 [INF] 1 customers found
 2019-10-21 17:48:23.196 -05:00 [INF] Viewed order history of Marielle Nolasco
 2019-10-21 17:51:41.490 -05:00 [INF] Begin Program
+2019-10-22 08:58:19.012 -05:00 [INF] Begin Program
+2019-10-22 09:07:06.896 -05:00 [INF] Searching for customer Marielle 
+2019-10-22 09:07:10.072 -05:00 [INF] 1 customers found
+2019-10-22 09:07:18.235 -05:00 [INF] Viewed order history of Marielle Nolasco
+2019-10-22 09:07:25.635 -05:00 [INF] Viewed order history of Flagship
+2019-10-22 09:07:38.129 -05:00 [INF] Viewed Flagship's inventory
+2019-10-22 09:21:31.947 -05:00 [INF] Searching for customer Javon 
+2019-10-22 09:21:32.405 -05:00 [INF] 0 customers found
+2019-10-22 09:46:20.789 -05:00 [INF] Customer Added! Name: Nick Enscala
+2019-10-22 09:46:31.120 -05:00 [INF] Searching for customer Nick 
+2019-10-22 09:46:31.257 -05:00 [INF] 1 customers found
+2019-10-22 09:46:37.393 -05:00 [INF] Viewed order history of Nick Enscala
+2019-10-22 09:46:37.393 -05:00 [INF] Customer Nick Enscala has no order history because they haven't placed any orders yet
+2019-10-22 09:46:48.388 -05:00 [INF] Searching for customer Nick 
+2019-10-22 09:46:48.511 -05:00 [INF] 1 customers found
+2019-10-22 09:47:21.758 -05:00 [ERR] Something went wrong in placing order
+2019-10-22 09:47:21.758 -05:00 [ERR] Customer bought no products.
+2019-10-22 09:47:35.099 -05:00 [INF] Order Added
+2019-10-22 09:47:35.246 -05:00 [INF] Order made by customer Nick Enscala at Flagship
+2019-10-22 09:47:52.456 -05:00 [INF] Viewed order history of Flagship
+2019-10-22 09:48:10.441 -05:00 [INF] Viewed Flagship's inventory
