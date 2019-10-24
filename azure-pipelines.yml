@@ -15,3 +15,7 @@ variables:
 steps:
 - script: cd Project1WebApp && dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
+
+  script: dotnet test
+  displayName: dotnet test
+  workingDirectory: Project1WebApp
