@@ -16,9 +16,15 @@ steps:
 - script: cd Project1WebApp && dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
 
-- script: dotnet test
+# - script: dotnet test
+#   displayName: dotnet test
+#   workingDirectory: Project1WebApp
+- task: DotNetCoreCLI@2
   displayName: dotnet test
-  workingDirectory: Project1WebApp
+  inputs:
+    command: 'test'
+    projects: './RestaurantReviews'
+    arguments: '-c $(buildConfiguration) --collect "XPlat Code Coverage"'
 
 - task: PublishCodeCoverageResults@1
   displayName: Publish code coverage
