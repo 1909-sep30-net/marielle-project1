@@ -36,7 +36,7 @@ namespace Project1Test
                     Street = input
                 };
             }
-            catch (InvalidAddressException e)
+            catch (InvalidAddressException)
             {
                 Assert.True(true);
             }
@@ -55,7 +55,7 @@ namespace Project1Test
                     Street = input
                 };
             }
-            catch (InvalidAddressException e)
+            catch (InvalidAddressException)
             {
                 Assert.True(false);
             }
@@ -74,7 +74,7 @@ namespace Project1Test
                     City = input
                 };
             }
-            catch (InvalidAddressException e)
+            catch (InvalidAddressException)
             {
                 Assert.True(true);
             }
@@ -93,7 +93,7 @@ namespace Project1Test
                     City = input
                 };
             }
-            catch (InvalidAddressException e)
+            catch (InvalidAddressException)
             {
                 Assert.True(false);
             }
@@ -112,7 +112,7 @@ namespace Project1Test
                     Zipcode = input
                 };
             }
-            catch (InvalidAddressException e)
+            catch (InvalidAddressException)
             {
                 Assert.True(true);
             }
@@ -131,7 +131,7 @@ namespace Project1Test
                     Zipcode = input
                 };
             }
-            catch (InvalidAddressException e)
+            catch (InvalidAddressException)
             {
                 Assert.True(false);
             }

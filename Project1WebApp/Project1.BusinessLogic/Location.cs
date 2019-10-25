@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Project1.BusinessLogic
 {
@@ -11,7 +9,7 @@ namespace Project1.BusinessLogic
     public class Location
     {
         /// <summary>
-        /// Branch Name of Location 
+        /// Branch Name of Location
         /// </summary>
         public string BranchName { get; set; }
 
@@ -33,6 +31,5 @@ namespace Project1.BusinessLogic
         public int Zipcode { get; set; }
 
         public int LocID { get; set; }
-
     }
 }

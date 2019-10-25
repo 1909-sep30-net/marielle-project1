@@ -1,17 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Project1.BusinessLogic;
-using Project1.DataAccess.Entities;
 using Project1.DataAccess;
+using Project1.DataAccess.Entities;
 
 namespace Project1WebApp
 {
@@ -38,8 +33,6 @@ namespace Project1WebApp
             services.AddControllersWithViews();
             services.AddDistributedMemoryCache();
             services.AddSession();
-
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

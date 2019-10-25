@@ -15,6 +15,7 @@ namespace Project1WebApp.Controllers
         /// Repository to get data from db in business logic form
         /// </summary>
         private readonly IRepository _repository;
+
         /// <summary>
         /// Mapper that maps business logic objects to view models
         /// </summary>

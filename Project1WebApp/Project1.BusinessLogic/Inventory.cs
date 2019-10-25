@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Project1.BusinessLogic
+﻿namespace Project1.BusinessLogic
 {
     /// <summary>
     /// Defines what is in inventory
@@ -9,11 +7,13 @@ namespace Project1.BusinessLogic
     public class Inventory
     {
         public Product Prod { get; set; }
+
         /// <summary>
         /// Property that describes either how much a customer wants to buy in a customer order
         /// or how much stock is left in a certian location
         /// </summary>
         public int Stock { get; set; }
+
         public int InventID { get; set; }
     }
 }

@@ -6,6 +6,7 @@ using Project1WebApp.Models;
 using Serilog;
 using System;
 using System.Collections.Generic;
+
 namespace Project1WebApp.Controllers
 {
     /// <summary>
@@ -21,7 +22,7 @@ namespace Project1WebApp.Controllers
         /// <summary>
         /// Mapper that maps business logic data to view model data
         /// </summary>
-        private VMapper _mapper = new VMapper();
+        private readonly VMapper _mapper = new VMapper();
 
         public CustomerController(IRepository repository)
         {
@@ -60,7 +61,7 @@ namespace Project1WebApp.Controllers
                 Log.Information($"Searching for customer {viewModel.FirstName} {viewModel.LastName}");
                 return RedirectToAction(nameof(Found), viewModel);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Log.Error("Something went wrong when searching for a customer");
                 Log.Error(e.Message);
@@ -158,6 +159,7 @@ namespace Project1WebApp.Controllers
             if (AvailInvent.availInventory.Count < 1) Log.Information($"{_repository.GetLocationByID(LocID).BranchName} has no inventory");
             return View(AvailInvent);
         }
+
         public ActionResult PlaceOrder()
         {
             var value = HttpContext.Session.GetString("CustID");
@@ -167,6 +169,7 @@ namespace Project1WebApp.Controllers
             PlaceOrderViewModelV2 AvailInvent = _mapper.ParseMenu(_repository.GetAvailInventory(LocID), CustID, LocID);
             return View(AvailInvent);
         }
+
         /// <summary>
         /// Action that adds an order to db via repository
         /// </summary>
@@ -196,7 +199,7 @@ namespace Project1WebApp.Controllers
                 PlaceOrderViewModelV2 pass = new PlaceOrderViewModelV2() { custBought = viewModel.custBought, CustID = viewModel.CustID, LocID = viewModel.LocID };
                 return RedirectToAction(nameof(OrderDetails), pass);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Log.Error("Something went wrong in placing order");
                 Log.Error(e.Message);

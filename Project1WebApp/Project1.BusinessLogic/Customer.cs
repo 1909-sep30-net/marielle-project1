@@ -12,9 +12,7 @@ namespace Project1.BusinessLogic
         private string lastName;
         private string street;
         private string city;
-        private States state;
         private int zipcode;
-        private int custId;
 
         /// <summary>
         /// First Name property of Customer class (Includes format validation)

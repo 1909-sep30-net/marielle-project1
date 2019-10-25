@@ -18,7 +18,7 @@ namespace Project1.DataAccess
         /// <summary>
         /// Mapper needed to map betweeen Business Logic objects and DB objects
         /// </summary>
-        private IMapper _map;
+        private readonly IMapper _map;
 
         public Repository(Project0DBContext context)
         {
@@ -196,11 +196,10 @@ namespace Project1.DataAccess
         /// <param name="i"></param>
         public void UpdateInventory(List<BL.Inventory> i)
         {
-            Inventory dbInv = new Inventory();
             foreach (BL.Inventory item in i)
             {
                 if (item.Stock < 1) throw new InvalidQuantityException("Quantity must be greater than 0");
-                dbInv = _context.Inventory.Single(inv => inv.InventoryId == item.InventID);
+                Inventory dbInv = _context.Inventory.Single(inv => inv.InventoryId == item.InventID);
                 
                 if (dbInv.Stock < item.Stock) throw new StockInsufficientException("Stock Insufficient");
                 dbInv.Stock = dbInv.Stock - item.Stock;

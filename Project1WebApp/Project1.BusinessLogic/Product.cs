@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Project1.BusinessLogic
+﻿namespace Project1.BusinessLogic
 {
     /// <summary>
     /// Product format of program
@@ -14,11 +10,12 @@ namespace Project1.BusinessLogic
         /// Name of the Product
         /// </summary>
         public string Name { get; set; }
-        
+
         /// <summary>
         /// Price of the Product
         /// </summary>
         public decimal Price { get; set; }
+
         public int ProdID { get; set; }
     }
 }

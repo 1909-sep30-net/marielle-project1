@@ -7,7 +7,7 @@ using System.Linq;
 namespace Project1.DataAccess
 {
     /// <summary>
-    /// Class that maps the Business Logic Objects to the objects the DB return    
+    /// Class that maps the Business Logic Objects to the objects the DB return
     /// </summary>
     public class DMapper : IMapper
     {
@@ -15,10 +15,12 @@ namespace Project1.DataAccess
         /// Context used to connect to the DB
         /// </summary>
         private readonly Project0DBContext _context;
+
         public DMapper(Project0DBContext context)
         {
             _context = context;
         }
+
         /// <summary>
         /// Method that converts DB customers to business logic customers and vice versa
         /// </summary>
@@ -35,7 +37,6 @@ namespace Project1.DataAccess
                 State = (States)Enum.Parse(typeof(States), c.State, true),
                 Zipcode = int.Parse(c.ZipCode),
                 CustID = c.CustId
-
             };
         }
 
@@ -51,6 +52,7 @@ namespace Project1.DataAccess
                 ZipCode = c.Zipcode.ToString()
             };
         }
+
         /// <summary>
         /// Method that converts DB inventory to Business Logic inventory and vice versa
         /// </summary>
@@ -65,18 +67,19 @@ namespace Project1.DataAccess
                 InventID = i.InventoryId
             };
         }
+
         public BusinessLogic.Inventory ParseInventory(Entities.CustOrder o)
         {
             return new BusinessLogic.Inventory()
             {
                 Prod = ParseProduct(_context.Product.Single(p => p.ProductId == o.ProductId)),
                 Stock = o.Quantity,
-                InventID = o.CustOrderId 
+                InventID = o.CustOrderId
             };
         }
 
         /// <summary>
-        /// Method that converts DB locations to Business Logic locations 
+        /// Method that converts DB locations to Business Logic locations
         /// </summary>
         /// <param name="l"></param>
         /// <returns></returns>
@@ -90,10 +93,9 @@ namespace Project1.DataAccess
                 Street = l.Street,
                 State = (States)Enum.Parse(typeof(States), l.State, true),
                 Zipcode = int.Parse(l.ZipCode)
-
-
             };
         }
+
         /// <summary>
         /// Method takes in DB orders and converts them to Business Logic orders and vice versa
         /// </summary>
@@ -110,8 +112,21 @@ namespace Project1.DataAccess
                 Total = o.Total
             };
         }
+
+        public Entities.Orders ParseOrders(BusinessLogic.Orders o)
+        {
+            return new Entities.Orders()
+            {
+                OrderDate = DateTime.Now,
+                LocationId = o.Location.LocID,
+                CustId = o.Cust.CustID,
+                CustOrder = ParseCustOrder(o.CustOrder),
+                Total = CalculateTotal(o.CustOrder)
+            };
+        }
+
         /// <summary>
-        /// Method that converts CustOrder from DB to Business Logic Inventory object types 
+        /// Method that converts CustOrder from DB to Business Logic Inventory object types
         /// </summary>
         /// <param name="list"></param>
         /// <returns></returns>
@@ -125,32 +140,6 @@ namespace Project1.DataAccess
             return inv;
         }
 
-        public Entities.Orders ParseOrders(BusinessLogic.Orders o)
-        {
-            return new Entities.Orders()
-            {
-                OrderDate = DateTime.Now,
-                LocationId = o.Location.LocID,
-                CustId = o.Cust.CustID,
-                CustOrder = ParseCustOrder(o.CustOrder),
-                Total = CalculateTotal(o.CustOrder)
-
-            };
-        }
-        /// <summary>
-        /// Method that Calculates Order Total
-        /// </summary>
-        /// <param name="custOrder"></param>
-        /// <returns></returns>
-        public decimal CalculateTotal(List<BusinessLogic.Inventory> custOrder)
-        {
-           decimal total = 0;
-            foreach(BusinessLogic.Inventory item in custOrder)
-            {
-                total += _context.Product.Single(p => p.ProductId == GetProductId(item.InventID)).Price * item.Stock;
-            }
-           return total;
-        }
         /// <summary>
         /// Method that converts Business Logic inventory object to DB CustOrder Entity
         /// </summary>
@@ -165,10 +154,26 @@ namespace Project1.DataAccess
                 {
                     Quantity = item.Stock,
                     ProductId = GetProductId(item.InventID)
-                }); 
+                });
             }
             return dbcustOrder;
         }
+
+        /// <summary>
+        /// Method that Calculates Order Total
+        /// </summary>
+        /// <param name="custOrder"></param>
+        /// <returns></returns>
+        public decimal CalculateTotal(List<BusinessLogic.Inventory> custOrder)
+        {
+            decimal total = 0;
+            foreach (BusinessLogic.Inventory item in custOrder)
+            {
+                total += _context.Product.Single(p => p.ProductId == GetProductId(item.InventID)).Price * item.Stock;
+            }
+            return total;
+        }
+
         /// <summary>
         /// Method that gets a product id
         /// </summary>
@@ -179,6 +184,7 @@ namespace Project1.DataAccess
             Entities.Inventory i = _context.Inventory.Single(inv => inventID == inv.InventoryId);
             return i.ProductId;
         }
+
         /// <summary>
         /// Method that converts DB Product to Business Logic Product
         /// </summary>
@@ -193,6 +199,5 @@ namespace Project1.DataAccess
                 ProdID = p.ProductId
             };
         }
-
     }
 }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Project1.BusinessLogic
 {
@@ -10,12 +9,10 @@ namespace Project1.BusinessLogic
     /// </summary>
     public class Orders
     {
-
         /// <summary>
         /// Customer who placed the order
         /// </summary>
         public Customer Cust { get; set; }
-
 
         /// <summary>
         /// Location where order was placed
@@ -26,7 +23,6 @@ namespace Project1.BusinessLogic
         /// List of products with their corresponding quantities that a customer ordered
         /// </summary>
         public List<Inventory> CustOrder { get; set; }
-
 
         /// <summary>
         /// Total of an order

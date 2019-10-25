@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Project1.DataAccess.Entities
+﻿namespace Project1.DataAccess.Entities
 {
     public partial class CustOrder
     {

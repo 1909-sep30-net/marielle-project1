@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Project1WebApp.Models;
+using System.Diagnostics;
 
 namespace Project1WebApp.Controllers
 {
@@ -27,6 +23,7 @@ namespace Project1WebApp.Controllers
         {
             return View();
         }
+
         public IActionResult About()
         {
             return View();
