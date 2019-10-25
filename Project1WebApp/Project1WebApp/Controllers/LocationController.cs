@@ -19,7 +19,7 @@ namespace Project1WebApp.Controllers
         /// <summary>
         /// Mapper that maps business logic objects to view models
         /// </summary>
-        private VMapper _mapper = new VMapper();
+        private readonly VMapper _mapper = new VMapper();
 
         public LocationController(IRepository repository)
         {
