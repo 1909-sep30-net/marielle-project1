@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace Project1.DataAccess
 {
     [Serializable]
-    internal class InvalidQuantityException : Exception
+    public class InvalidQuantityException : Exception
     {
         public InvalidQuantityException()
         {

@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace Project1.DataAccess
 {
     [Serializable]
-    internal class StockInsufficientException : Exception
+    public class StockInsufficientException : Exception
     {
         public StockInsufficientException()
         {
