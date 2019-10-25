@@ -7,7 +7,7 @@
 @if (Model.Order.Count > 0)
 {
     int ctr = 0;
-    <table class="table" summary="Order history of @Model.BranchName">
+    <table class="table" aria-describedby="Order history of @Model.BranchName">
         <thead>
             <tr>
                 <th scope="col">
